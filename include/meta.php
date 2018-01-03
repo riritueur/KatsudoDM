@@ -19,9 +19,3 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="KastudoDM" />
 <meta name="twitter:description" content="KatsudoDM est un site de d'hébergement en ligne et de nom domaine totalement gratuit !" />
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!-- Custom fonts for this template-->
-<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<!-- Custom styles for this template-->
-<link href="css/sb-admin.css" rel="stylesheet">
