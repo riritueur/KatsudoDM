@@ -12,30 +12,42 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.php">
+          <a class="nav-link" href="client.php">
             <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Charts</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.php">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Tables</span>
+            <span class="nav-link-text">Clients</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Components</span>
+            <span class="nav-link-text">Factures</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="navbar.php">Navbar</a>
+              <a href="facture-client.php">Clients</a>
             </li>
             <li>
-              <a href="cards.php">Cards</a>
+              <a href="facture-fournisseur.php">Fournisseurs</a>
             </li>
           </ul>
+        </li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="fournisseur.php">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Fournisseurs</span>
+          </a>
+        </li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="produit.php">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Produits</span>
+          </a>
+        </li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="taxe.php">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Taxes</span>
+          </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
