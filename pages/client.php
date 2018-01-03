@@ -39,7 +39,17 @@
 
     <div id="wrapper">
 
-         <?php include("../include/nav.php"); ?>
+        <?php include("../include/nav.php"); ?>
+			
+				<?php
+					try{
+						$bdd = new PDO('mysql:host=31.170.164.67;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
+					}
+					catch (Exception $e)
+					{
+        		die('Erreur : ' . $e->getMessage());
+					}
+				?>
 
         <div id="page-wrapper">
             <div class="row">
@@ -68,28 +78,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd gradeX">
+                                    <tr class="gradeX">
                                         <td>Trident</td>
                                         <td>Internet Explorer 4.0</td>
                                         <td>Win 95+</td>
                                         <td class="center">4</td>
                                         <td class="center">X</td>
                                     </tr>
-                                    <tr class="even gradeC">
+                                    <tr class="gradeC">
                                         <td>Trident</td>
                                         <td>Internet Explorer 5.0</td>
                                         <td>Win 95+</td>
                                         <td class="center">5</td>
                                         <td class="center">C</td>
                                     </tr>
-                                    <tr class="odd gradeA">
+                                    <tr class="gradeA">
                                         <td>Trident</td>
                                         <td>Internet Explorer 5.5</td>
                                         <td>Win 95+</td>
                                         <td class="center">5.5</td>
                                         <td class="center">A</td>
                                     </tr>
-                                    <tr class="even gradeA">
+                                    <tr class="gradeA">
                                         <td>Trident</td>
                                         <td>Internet Explorer 6</td>
                                         <td>Win 98+</td>
