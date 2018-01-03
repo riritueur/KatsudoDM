@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <?php include("include/meta.php"); ?>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -31,10 +30,17 @@
             <label for="exampleInputPassword1">Password</label>
             <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
           </div>
-          <a class="btn btn-primary btn-block" href="index.php">Login</a>
+          <div class="form-group">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox"> Remember Password</label>
+            </div>
+          </div>
+          <a class="btn btn-primary btn-block" href="index.html">Login</a>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="forgot-password.php">Forgot Password?</a>
+          <a class="d-block small mt-3" href="register.html">Register an Account</a>
+          <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
         </div>
       </div>
     </div>

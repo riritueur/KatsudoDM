@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <?php include("include/meta.php"); ?>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,26 +19,26 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.php">Start Bootstrap</a>
+    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.php">
+          <a class="nav-link" href="index.html">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.php">
+          <a class="nav-link" href="charts.html">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Charts</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.php">
+          <a class="nav-link" href="tables.html">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Tables</span>
           </a>
@@ -51,10 +50,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="navbar.php">Navbar</a>
+              <a href="navbar.html">Navbar</a>
             </li>
             <li>
-              <a href="cards.php">Cards</a>
+              <a href="cards.html">Cards</a>
             </li>
           </ul>
         </li>
@@ -65,16 +64,16 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="login.php">Login Page</a>
+              <a href="login.html">Login Page</a>
             </li>
             <li>
-              <a href="register.php">Registration Page</a>
+              <a href="register.html">Registration Page</a>
             </li>
             <li>
-              <a href="forgot-password.php">Forgot Password Page</a>
+              <a href="forgot-password.html">Forgot Password Page</a>
             </li>
             <li>
-              <a href="blank.php">Blank Page</a>
+              <a href="blank.html">Blank Page</a>
             </li>
           </ul>
         </li>
@@ -325,7 +324,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.php">Logout</a>
+            <a class="btn btn-primary" href="login.html">Logout</a>
           </div>
         </div>
       </div>
