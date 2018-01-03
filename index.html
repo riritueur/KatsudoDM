@@ -19,7 +19,6 @@
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-<<<<<<< HEAD
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Start Bootstrap</a>
@@ -222,9 +221,6 @@
       </ul>
     </div>
   </nav>
-=======
-  <?php include("include/nav.php"); ?>
->>>>>>> e4ff0364948f239f7a14bbe8b5bc969293dd9af3
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
