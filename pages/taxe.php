@@ -70,7 +70,6 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>Nom</th>
                                         <th>Type</th>
                                         <th>Montant</th>
                                         <th>Date d'émission</th>
@@ -79,11 +78,11 @@
                                 </thead>
                                 <tbody>
                                     <?php
-																			$result = $bdd->query("SELECT * FROM Salarie");
+																			$result = $bdd->query("SELECT * FROM Taxe");
 																			while($data = $result->fetch()){
 																				echo '<tr>
 																							<td>'.$data['type_t'].'</td>'.'
-																							<td>'.$data['montant_t'].'</td>'.'
+																							<td>'.$data['montant_t'].' €</td>'.'
 																							<td>'.$data['date_emi_t'].'</td>'.'
 																							<td>'.$data['date_recouv_t'].'</td>'.'
 																							<td>
@@ -109,12 +108,17 @@
                             </table>
                             <!-- /.table-responsive -->
 													<h4>
-														Valeur de la TVA:
+														Montant de la TVA:
 														<?php
 															$result = $bdd->query("SELECT montant_tva FROM TVA where id_tva=1");
 															$data = $result->fetch();
 															echo $data['montant_tva'].' %';
 														?>
+														<a href="google.com">
+															<button type="button" class="btn btn-default btn-circle">
+																<i class="fa fa-pencil"></i>
+															</button>
+														</a>
 													</h4>
                         </div>
                         <!-- /.panel-body -->
