@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+
 <head>
-<meta http-equiv="refresh" content="0;url=pages/index.html">
-<title>SB Admin 2</title>
-<script language="javascript">
+  <?php include('../include/meta.php'); ?>
+  <title>Katsudo DM</title>
+
+  <meta http-equiv="refresh" content="0;url=pages/index.php">
+  
+  <script language="javascript">
     window.location.href = "pages/index.php"
-</script>
+  </script>
 </head>
+
 <body>
-Go to <a href="pages/index.php">/pages/index.php</a>
+  Redirection en cours, si vous êtes sur cette page 
+  depuis plus de 5 secondes veuillez cliquer
+  <a href="pages/index.php">ici</a>
 </body>
+
 </html>

@@ -1,11 +1,13 @@
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-<!-- Page level plugin JavaScript-->
-<script src="vendor/chart.js/Chart.min.js"></script>
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin.min.js"></script>
-<!-- Custom scripts for this page-->
-<script src="js/sb-admin-charts.min.js"></script>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../dist/js/sb-admin-2.js"></script>
