@@ -59,6 +59,7 @@
             </li>
           </ul>
         </li>
+        <li> ----<br/>---- </li>
         <li>
           <a href="#"><i class="fa fa-wrench fa-fw"></i> Test<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
@@ -79,9 +80,6 @@
             </li>
             <li>
               <a href="grid.php">Grid</a>
-            </li>
-            <li>
-              <a href="tables.php"><i class="fa fa-table fa-fw"></i> Tables</a>
             </li>
             <li>
               <a href="tables.php"><i class="fa fa-table fa-fw"></i> Tables</a>
