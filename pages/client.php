@@ -43,7 +43,7 @@
 			
 				<?php
 					try{
-						$bdd = new PDO('mysql:host=31.170.164.67;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
+						$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
 					}
 					catch (Exception $e)
 					{
