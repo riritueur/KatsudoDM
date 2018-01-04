@@ -54,7 +54,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Fournisseurs</h1>
+                    <h1 class="page-header">Produits</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -63,7 +63,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Liste des fournisseurs
+                            Liste des produits
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -83,8 +83,8 @@
                                         echo '<tr>
                                                     <td>'.$data['ref_p'].'</td>'.'
                                                     <td>'.$data['desc_p'].'</td>'.'
-                                                    <td><img>'.$data['image_p'].'</img></td>'.'
-                                                    <td>'.$data['prix_ht'].'</td>'.'
+                                                    <td><img class="img-thumbnail" src="'.$data['image_p'].'" alt='.$data['ref-p'].'/></td>'.'
+                                                    <td>'.$data['prix_ht'].' €</td>'.'
                                                     <td>
                                                         <button type="button" class="btn btn-default btn-circle">
                                                             <i class="fa fa-pencil"></i>
