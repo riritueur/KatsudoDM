@@ -64,25 +64,31 @@
           <a href="#"><i class="fa fa-wrench fa-fw"></i> Test<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li>
-              <a href="panels-wells.php">Panels and Wells</a>
+              <a href="Demo/panels-wells.php">Panels and Wells</a>
             </li>
             <li>
-              <a href="buttons.php">Buttons</a>
+              <a href="Demo/buttons.php">Buttons</a>
             </li>
             <li>
-              <a href="notifications.php">Notifications</a>
+              <a href="Demo/notifications.php">Notifications</a>
             </li>
             <li>
-              <a href="typography.php">Typography</a>
+              <a href="Demo/typography.php">Typography</a>
             </li>
             <li>
-              <a href="icons.php"> Icons</a>
+              <a href="Demo/icons.php"> Icons</a>
             </li>
             <li>
-              <a href="grid.php">Grid</a>
+              <a href="Demo/grid.php">Grid</a>
             </li>
             <li>
-              <a href="tables.php"><i class="fa fa-table fa-fw"></i> Tables</a>
+              <a href="Demo/tables.php"><i class="fa fa-table fa-fw"></i> Tables</a>
+            </li>
+            <li>
+              <a href="Demo/blank.php"><i class="fa fa-table fa-fw"></i> Blank</a>
+            </li>
+            <li>
+              <a href="Demo/forms.php"><i class="fa fa-table fa-fw"></i> Forms</a>
             </li>
             <li>
               <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
