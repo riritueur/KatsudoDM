@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 
@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Fournisseurs</title>
+  <title>Katsuo DM - Fournisseurs</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -91,7 +91,7 @@
                                                         <button type="button" class="btn btn-default btn-circle">
                                                             <i class="fa fa-pencil"></i>
                                                         </button>
-                                                        <button type="button" class="btn btn-default btn-circle">
+                                                        <button type="button" class="btn btn-danger btn-circle">
                                                             <i class="fa fa-times"></i>
                                                         </button>
                                                     </td>'.'

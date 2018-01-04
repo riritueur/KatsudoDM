@@ -3,13 +3,9 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <?php include("../include/meta.php"); ?>
 
-    <title>Produits</title>
+    <title>Katsudo DM - Produits</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -89,7 +85,7 @@
                                                         <button type="button" class="btn btn-default btn-circle">
                                                             <i class="fa fa-pencil"></i>
                                                         </button>
-                                                        <button type="button" class="btn btn-default btn-circle">
+                                                        <button type="button" class="btn btn-danger btn-circle">
                                                             <i class="fa fa-times"></i>
                                                         </button>
                                                     </td>'.'
