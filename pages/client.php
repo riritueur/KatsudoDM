@@ -51,7 +51,6 @@
 					}
 				?>
 
-<<<<<<< HEAD
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -80,25 +79,25 @@
                                 </thead>
                                 <tbody>
                                     <?php
-																			$result = $bdd->query("SELECT * FROM Client");
-																			while($data = $result->fetch()){
-																				echo '<tr>
-																							<td>'.$data['Nom_c'].'</td>'.'
-																							<td>'.$data['Prenom_c'].'</td>'.'
-																							<td>'.$data['Adresse_c'].'</td>'.'
-																							<td>'.$data['Tel_c'].'</td>'.'
-																							<td>'.$data['Email_c'].'</td>'.'
-																							<td>
-																								<button type="button" class="btn btn-default btn-circle">
-																									<i class="fa fa-pencil"></i>
-																								</button>
-																								<button type="button" class="btn btn-default btn-circle">
-																									<i class="fa fa-times"></i>
-																								</button>
-																							</td>'.'
-																							</tr>';
-																			}
-																		?>
+                                    $result = $bdd->query("SELECT * FROM Client");
+                                    while($data = $result->fetch()){
+                                        echo '<tr>
+                                                    <td>'.$data['Nom_c'].'</td>'.'
+                                                    <td>'.$data['Prenom_c'].'</td>'.'
+                                                    <td>'.$data['Adresse_c'].'</td>'.'
+                                                    <td>'.$data['Tel_c'].'</td>'.'
+                                                    <td>'.$data['Email_c'].'</td>'.'
+                                                    <td>
+                                                        <button type="button" class="btn btn-default btn-circle">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default btn-circle">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </td>'.'
+                                                    </tr>';
+                                    }
+                                ?>
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
