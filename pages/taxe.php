@@ -106,10 +106,10 @@
 								<h4>
 									Montant de la TVA:
 									<?php
-															$result = $bdd->query("SELECT montant_tva FROM TVA where id_tva=1");
-															$data = $result->fetch();
-															echo $data['montant_tva'].' %';
-														?>
+                                        $result = $bdd->query("SELECT montant_tva FROM TVA where id_tva=1");
+                                        $data = $result->fetch();
+                                        echo '<strong>' . $data['montant_tva'].' %<strong/>';
+                                    ?>
 										<a href="google.com">
 															<button type="button" class="btn btn-default btn-circle">
 																<i class="fa fa-pencil"></i>
