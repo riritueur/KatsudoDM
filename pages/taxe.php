@@ -86,16 +86,12 @@
 															<td>'.$data['date_emi_t'].'</td>'.'
 															<td>'.$data['date_recouv_t'].'</td>'.'
 															<td>
-																<a href="google.com">
-																	<button type="button" class="btn btn-default btn-circle">
-																		<i class="fa fa-pencil"></i>
-																	</button>
-																</a>
-																<a href="google.com">
-																	<button type="button" class="btn btn-default btn-circle">
-																		<i class="fa fa-times"></i>
-																	</button>
-																</a>
+																<button type="button" class="btn btn-default btn-circle">
+																	<i class="fa fa-pencil"></i>
+																</button>
+																<button type="button" class="btn btn-default btn-circle">
+																	<i class="fa fa-times"></i>
+																</button>
 															</td>'.'
 															</tr>';
 											}

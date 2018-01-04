@@ -51,66 +51,63 @@
 					}
 				?>
 
-      <div id="page-wrapper">
-        <div class="row">
-          <div class="col-lg-12">
-            <h1 class="page-header">Fournisseurs</h1>
-          </div>
-          <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                Liste des fournisseurs
-              </div>
-              <!-- /.panel-heading -->
-              <div class="panel-body">
-                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                  <thead>
-                    <tr>
-                      <th>Nom</th>
-                      <th>Prénom</th>
-                      <th>Adresse</th>
-                      <th>Téléphone</th>
-                      <th>E-mail</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                      $result = $bdd->query("SELECT * FROM Fournisseur");
-                      while($data = $result->fetch()){
-                          echo '<tr>
-                                      <td>'.$data['nom_f'].'</td>'.'
-                                      <td>'.$data['prenom_f'].'</td>'.'
-                                      <td>'.$data['adresse_f'].'</td>'.'
-                                      <td>'.$data['tel_f'].'</td>'.'
-                                      <td>'.$data['email_f'].'</td>'.'
-                                      <td>
-                                          <div class="dropdown">
-                                              <button id="dLabel" type = "button" data-toggle="dropdown" aria-hashpopup="true" aria-expanded="false">
-                                                  Options
-                                                  <span class="caret"></span>
-                                              </button>
-                                              <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                                  <li>
-                                                      <a href="google.com">
-                                                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                          Modifier
-                                                      </a>
-                                                  </li>
-                                              </ul>
-                                          </div>
-                                      </td>'.'
-                                      </tr>';
-                      }
-                  ?>
-                  </tbody>
-                </table>
-                <!-- /.table-responsive -->
-              </div>
-              <!-- /.panel-body -->
+<<<<<<< HEAD
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Fournisseurs</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Liste des fournisseurs
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Adresse</th>
+                                        <th>Téléphone</th>
+                                        <th>E-mail</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+																			$result = $bdd->query("SELECT * FROM Fournisseur");
+																			while($data = $result->fetch()){
+																				echo '<tr>
+																							<td>'.$data['nom_f'].'</td>'.'
+																							<td>'.$data['prenom_f'].'</td>'.'
+																							<td>'.$data['adresse_f'].'</td>'.'
+																							<td>'.$data['tel_f'].'</td>'.'
+																							<td>'.$data['email_f'].'</td>'.'
+																							<td>
+																								<button type="button" class="btn btn-default btn-circle">
+																									<i class="fa fa-pencil"></i>
+																								</button>
+																								<button type="button" class="btn btn-default btn-circle">
+																									<i class="fa fa-times"></i>
+																								</button>
+																							</td>'.'
+																							</tr>';
+																			}
+																		?>
+                                </tbody>
+                            </table>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
             </div>
             <!-- /.panel -->
           </div>

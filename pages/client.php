@@ -51,61 +51,63 @@
 					}
 				?>
 
-      <div id="page-wrapper">
-        <div class="row">
-          <div class="col-lg-12">
-            <h1 class="page-header">Clients</h1>
-          </div>
-          <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                Liste des clients
-              </div>
-              <!-- /.panel-heading -->
-              <div class="panel-body">
-                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                  <thead>
-                    <tr>
-                      <th>Nom</th>
-                      <th>Prénom</th>
-                      <th>Adresse</th>
-                      <th>Téléphone</th>
-                      <th>E-mail</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                      $result = $bdd->query("SELECT * FROM Client");
-                      while($data = $result->fetch()){
-                          echo '<tr>
-                                      <td>'.$data['Nom_c'].'</td>'.'
-                                      <td>'.$data['Prenom_c'].'</td>'.'
-                                      <td>'.$data['Adresse_c'].'</td>'.'
-                                      <td>'.$data['Tel_c'].'</td>'.'
-                                      <td>'.$data['Email_c'].'</td>'.'
-                                      <td>
-                                          <div class="dropdown">
-                                              <button id="dLabel" type="button">
-                                                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modifier
-                                              </button>
-                                              <button id="dLabel" type="button">
-                                                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Supprimer
-                                              </button>
-                                              
-                                          </div>
-                                      </td>'.'
-                                      </tr>';
-                      }
-                  ?>
-                  </tbody>
-                </table>
-                <!-- /.table-responsive -->
-              </div>
-              <!-- /.panel-body -->
+<<<<<<< HEAD
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Clients</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Liste des clients
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Adresse</th>
+                                        <th>Téléphone</th>
+                                        <th>E-mail</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+																			$result = $bdd->query("SELECT * FROM Client");
+																			while($data = $result->fetch()){
+																				echo '<tr>
+																							<td>'.$data['Nom_c'].'</td>'.'
+																							<td>'.$data['Prenom_c'].'</td>'.'
+																							<td>'.$data['Adresse_c'].'</td>'.'
+																							<td>'.$data['Tel_c'].'</td>'.'
+																							<td>'.$data['Email_c'].'</td>'.'
+																							<td>
+																								<button type="button" class="btn btn-default btn-circle">
+																									<i class="fa fa-pencil"></i>
+																								</button>
+																								<button type="button" class="btn btn-default btn-circle">
+																									<i class="fa fa-times"></i>
+																								</button>
+																							</td>'.'
+																							</tr>';
+																			}
+																		?>
+                                </tbody>
+                            </table>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
             </div>
             <!-- /.panel -->
           </div>

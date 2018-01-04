@@ -94,20 +94,12 @@
 																							<td>'.$data['salaire_net_s'].'</td>'.'
 																							<td>'.$data['salaire_brut_s'].'</td>'.'
 																							<td>
-																								<div class="dropdown">
-																									<button id="dLabel" type = "button" data-toggle="dropdown" aria-hashpopup="true" aria-expanded="false">
-																										Options
-																										<span class="caret"></span>
-																									</button>
-																									<ul class="dropdown-menu" aria-labelledby="dLabel">
-																										<li>
-																											<a href="google.com">
-																												<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-																												Modifier
-																											</a>
-																										</li>
-																									</ul>
-																								</div>
+																								<button type="button" class="btn btn-default btn-circle">
+																									<i class="fa fa-pencil"></i>
+																								</button>
+																								<button type="button" class="btn btn-default btn-circle">
+																									<i class="fa fa-times"></i>
+																								</button>
 																							</td>'.'
 																							</tr>';
 																			}
