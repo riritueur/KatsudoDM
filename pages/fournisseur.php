@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Client</title>
+    <title>Fournisseurs</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +54,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Clients</h1>
+                    <h1 class="page-header">Fournisseurs</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -63,7 +63,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Liste des clients
+                            Liste des fournisseurs
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -79,14 +79,14 @@
                                 </thead>
                                 <tbody>
                                     <?php
-																			$result = $bdd->query("SELECT * FROM Client");
+																			$result = $bdd->query("SELECT * FROM Fournisseur");
 																			while($data = $result->fetch()){
 																				echo '<tr>
-																							<td>'.$data['Nom_c'].'</td>'.'
-																							<td>'.$data['Prenom_c'].'</td>'.'
-																							<td>'.$data['Adresse_c'].'</td>'.'
-																							<td>'.$data['Tel_c'].'</td>'.'
-																							<td>'.$data['Email_c'].'</td>'.'
+																							<td>'.$data['nom_f'].'</td>'.'
+																							<td>'.$data['prenom_f'].'</td>'.'
+																							<td>'.$data['adresse_f'].'</td>'.'
+																							<td>'.$data['tel_f'].'</td>'.'
+																							<td>'.$data['email_f'].'</td>'.'
 																							<td>
 																								<div class="dropdown">
 																									<button id="dLabel" type = "button" data-toggle="dropdown" aria-hashpopup="true" aria-expanded="false">
