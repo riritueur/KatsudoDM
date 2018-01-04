@@ -79,7 +79,7 @@
                                         echo '<tr>
                                                     <td>'.$data['ref_p'].'</td>'.'
                                                     <td>'.$data['desc_p'].'</td>'.'
-                                                    <td><img max-height=50px max-width=200px src="'.$data['image_p'].'" alt='.$data['ref-p'].'/></td>'.'
+                                                    <td><img height=50px src="'.$data['image_p'].'" alt='.$data['ref-p'].'/></td>'.'
                                                     <td>'.$data['prix_ht'].' €</td>'.'
                                                     <td>
                                                         <button type="button" class="btn btn-default btn-circle">
