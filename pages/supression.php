@@ -16,8 +16,7 @@
           die('Erreur : ' . $e->getMessage());
         }
 
-        $result = $bdd->prepare("DELETE FROM ? WHERE ? = ?");  
-        $result->execute(array($_POST['table'], $_POST['nomid'], $_POST['id']));
+        $result = $bdd->query('DELETE FROM '. $_POST['table'] .' WHERE '. $_POST['nomid'] .' = '. $_POST['id'].'');  
         
     }
     header('Location: '.$_POST['red']);
