@@ -76,19 +76,19 @@
 											$result = $bdd->query("SELECT * FROM Taxe");
 											while($data = $result->fetch()){
 												echo '<tr>
-                                                        <td>'.$data['type_t'].'</td>'.'
-                                                        <td>'.$data['montant_t'].' €</td>'.'
-                                                        <td>'.$data['date_emi_t'].'</td>'.'
-                                                        <td>'.$data['date_recouv_t'].'</td>'.'
-                                                        <td>
-                                                            <button type="button" class="btn btn-default btn-circle">
-                                                                <i class="fa fa-pencil"></i>
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger btn-circle">
-                                                                <i class="fa fa-times danger"></i>
-                                                            </button>
-                                                        </td>'.'
-                                                        </tr>';
+															<td>'.$data['type_t'].'</td>'.'
+															<td>'.$data['montant_t'].' €</td>'.'
+															<td>'.$data['date_emi_t'].'</td>'.'
+															<td>'.$data['date_recouv_t'].'</td>'.'
+															<td>
+																	<button type="button" class="btn btn-default btn-circle">
+																			<i class="fa fa-pencil"></i>
+																	</button>
+																	<button type="button" class="btn btn-danger btn-circle">
+																			<i class="fa fa-times danger"></i>
+																	</button>
+															</td>'.'
+															</tr>';
 											}
 										?>
 									</tbody>
@@ -97,15 +97,15 @@
 								<h4>
 									Montant de la TVA:
 									<?php
-                                        $result = $bdd->query("SELECT montant_tva FROM TVA where id_tva=1");
-                                        $data = $result->fetch();
-                                        echo '<strong>' . $data['montant_tva'].' %<strong/>';
-                                    ?>
+										$result = $bdd->query("SELECT montant_tva FROM TVA where id_tva=1");
+										$data = $result->fetch();
+										echo '<strong>' . $data['montant_tva'].' %<strong/>';
+									?>
 										<a href="google.com">
-															<button type="button" class="btn btn-default btn-circle">
-																<i class="fa fa-pencil"></i>
-															</button>
-														</a>
+											<button type="button" class="btn btn-default btn-circle">
+												<i class="fa fa-pencil"></i>
+											</button>
+										</a>
 								</h4>
 							</div>
 							<!-- /.panel-body -->
