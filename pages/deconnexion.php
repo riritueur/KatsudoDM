@@ -11,7 +11,7 @@
   
     session_destroy();
 
-    header('Location: http://katsudodm.richard-peres.xyz/');
+    header('Location: ../index.php');
     exit;
   ?>
   

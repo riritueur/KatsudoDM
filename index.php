@@ -33,34 +33,42 @@
   session_start();
   
   if(!empty($_COOKIE['login'])) {
-    header('Location: http://katsudodm.richard-peres.xyz/pages/');
+    header('Location: ./pages/index.php');
     exit;
   }
     
   if(!empty($_POST['id']) && !empty($_POST['id'])) {
       $signin = false;
       
-      try{
-          $bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
-      }
-      catch (Exception $e)
-      {
-        die('Erreur : ' . $e->getMessage());
-      }
-      $result = $bdd->query("SELECT * FROM Utilisateur");
-      while($data = $result->fetch()){
-        if($data['id_user'] == $_POST['id'] 
-           && $data['pass_user'] == $_POST['pass']) {
-          $signin = true;
-        }
-  
-      }
+      /** POUR TEST LOCAL A SUPPRIMER **/
+      if($_POST['id'] == "admin" && $_POST['pass'] == "password")
+        $signin = true;
       
+       /** POUR TEST LOCAL A SUPPRIMER **/
+      if($signin == false) { /****/
+        try{
+            $bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
+        }
+        catch (Exception $e)
+        {
+          die('Erreur : ' . $e->getMessage());
+        }
+        $result = $bdd->query("SELECT * FROM Utilisateur");
+        while($data = $result->fetch()){
+          if($data['id_user'] == $_POST['id'] 
+             && $data['pass_user'] == $_POST['pass']) {
+            $signin = true;
+          }
+
+        }
+      }/****/
+      
+        
       if($signin) {
   
         setcookie('login',$_POST['id'],time()+1800); 
         
-        header('Location: http://katsudodm.richard-peres.xyz/pages/index.php');
+        header('Location: ./pages/index.php');
         exit;
       }
       else {
