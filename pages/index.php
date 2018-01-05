@@ -34,7 +34,6 @@
     <div id="wrapper">
 
          <?php include("../include/nav.php"); ?>
-
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">

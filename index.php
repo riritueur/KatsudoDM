@@ -49,13 +49,16 @@
       }
       $result = $bdd->query("SELECT * FROM Utilisateur");
       while($data = $result->fetch()){
-        if($data['id_user'] == $_POST['id'] && $data['pass_user'] == $_POST['pass'])
-          $sign = true;
+        if($data['id_user'] == $_POST['id'] 
+           && $data['pass_user'] == $_POST['pass']) {
+          $signin = true;
+        }
+  
       }
       
       if($signin) {
   
-        setcookie("login",$_POST['id'],time()+1800); 
+        setcookie('login',$_POST['id'],time()+1800); 
         
         header('Location: http://katsudodm.richard-peres.xyz/pages/index.php');
         exit;
