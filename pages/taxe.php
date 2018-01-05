@@ -94,6 +94,55 @@
 									</tbody>
 								</table>
 								<!-- /.table-responsive -->
+								<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+												<div class="modal-content">
+														<div class="modal-header">
+																<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+																<h4 class="modal-title" id="myModalLabel">Ajouter une taxe</h4>
+														</div>
+														<div class="modal-body">
+															<form role="form" class="AVAST_PAM_nonloginform" method="post">
+																<label>Type</label>
+																<input class="form-control" name="type" id="type" required/>
+																<label>Montant</label>
+																<input class="form-control" name="montant" id="montant" required/>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+																	<button type="submit" name="submit" class="btn btn-primary">Ajouter</button>
+																</div>
+															</form>
+															<?php
+																if(isset($_POST['submit'])){
+																	 if(is_string($_POST['type']) && strlen($_POST['type'])<21 && preg_match('#^[0-9]+$#',$_POST['montant'])) {
+																		 $dateemi = date("Y-m-d H:i:s");
+																		 $daterecouv = date("Y-m-d H:i:s", mktime(23, 59, 59, date("m")+1  , date("d"), date("Y")));
+																		 echo '
+																		 <form id="formT" role="form" method="post" action="ajout.php">
+																		 	<input type="hidden" name="values" value="(type_t, montant_t, date_emi_t, date_recouv_t)"/>
+																			<input type="hidden" name="table" value="Taxe"/>
+																			<input type="hidden" name="red" value="taxe.php"/>
+																			<input type="hidden" name="a" value="'.$_POST['type'].'"/>
+																			<input type="hidden" name="b" value="'.$_POST['montant'].'"/>
+																			<input type="hidden" name="c" value="'.$dateemi.'"/>
+																			<input type="hidden" name="d" value="'.$daterecouv.'"/>
+																		</form>
+																		 <script>document.getElementById("formT").submit();</script>';
+																	 } else {
+																		 echo 'erreur';
+																		 $_POST = array();
+																	 }
+																}
+															?>
+													</div>
+												</div>
+												<!-- /.modal-content -->
+										</div>
+										<!-- /.modal-dialog -->
+								</div>
+								<button type="button" class="btn btn-default btn-circle" data-toggle="modal" data-target="#myModal2">
+									<i class="fa fa-plus"></i>
+								</button>
 								<h4>
 									Montant de la TVA:
 									<?php
