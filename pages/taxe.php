@@ -38,14 +38,13 @@
 		<?php include("../include/nav.php"); ?>
 
 		<?php
-					try{
-						$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
-					}
-					catch (Exception $e)
-					{
-        		die('Erreur : ' . $e->getMessage());
-					}
-				?>
+            try{
+                $bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
+            }
+            catch (Exception $e) {
+              die('Erreur : ' . $e->getMessage());
+            }
+        ?>
 
 			<div id="page-wrapper">
 				<div class="row">
@@ -77,19 +76,19 @@
 											$result = $bdd->query("SELECT * FROM Taxe");
 											while($data = $result->fetch()){
 												echo '<tr>
-															<td>'.$data['type_t'].'</td>'.'
-															<td>'.$data['montant_t'].' €</td>'.'
-															<td>'.$data['date_emi_t'].'</td>'.'
-															<td>'.$data['date_recouv_t'].'</td>'.'
-															<td>
-																<button type="button" class="btn btn-default btn-circle">
-																	<i class="fa fa-pencil"></i>
-																</button>
-																<button type="button" class="btn btn-danger btn-circle">
-																	<i class="fa fa-times danger"></i>
-																</button>
-															</td>'.'
-															</tr>';
+                                                        <td>'.$data['type_t'].'</td>'.'
+                                                        <td>'.$data['montant_t'].' €</td>'.'
+                                                        <td>'.$data['date_emi_t'].'</td>'.'
+                                                        <td>'.$data['date_recouv_t'].'</td>'.'
+                                                        <td>
+                                                            <button type="button" class="btn btn-default btn-circle">
+                                                                <i class="fa fa-pencil"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-danger btn-circle">
+                                                                <i class="fa fa-times danger"></i>
+                                                            </button>
+                                                        </td>'.'
+                                                        </tr>';
 											}
 										?>
 									</tbody>

@@ -37,7 +37,7 @@
     exit;
   }
     
-  if(!empty($_POST['id']) && !empty($_POST['id'])) {
+  if(!empty($_POST['id']) && !empty($_POST['pass'])) {
       $signin = false;
       
       /** POUR TEST LOCAL A SUPPRIMER **/
@@ -104,7 +104,7 @@
                           </div>
 
                           <!-- Change this to a button or input when using this as a form -->
-                          <button href="index.php" class="btn btn-lg btn-success btn-block" type="submit">Se connecter</button>
+                          <button class="btn btn-lg btn-success btn-block" type="submit">Se connecter</button>
                         </fieldset>
                       </form>
                     </div>
@@ -138,18 +138,14 @@
                       </div>
                       <br/>
                       <!-- Change this to a button or input when using this as a form -->
-                      <button href="index.php" class="btn btn-lg btn-success btn-block" type="submit">Se connecter</button>
+                      <button class="btn btn-lg btn-success btn-block" type="submit">Se connecter</button>
                     </fieldset>
                   </form>
                 </div>
               </div>
             </div>';
   
-  }
-  
-  
-      
-          
+  }    
         
     echo '
     </div>
