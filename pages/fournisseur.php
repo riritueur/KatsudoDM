@@ -115,7 +115,7 @@
   <!-- /.row -->
   <!-- /#page-wrapper -->
 
-  <?php include('../include/scripts'); ?>
+  <?php include('../include/scripts.php'); ?>
 
 </body>
 

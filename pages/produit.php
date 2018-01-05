@@ -110,7 +110,7 @@
       <!-- /#page-wrapper -->
 
   </div>
-  <?php include('../include/scripts'); ?>
+  <?php include('../include/scripts.php'); ?>
 
 </body>
 
