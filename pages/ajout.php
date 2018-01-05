@@ -15,7 +15,7 @@
 			}
 		}
 	}
-
+	echo "INSERT INTO ".$_POST["table"]." ".$_POST["values"]." VALUES (".$values.");";
 	$result = $bdd->query("INSERT INTO ".$_POST["table"]." ".$_POST["values"]." VALUES (".$values.");");
 	$data = $result->fetch();
 		echo '<h1>Succès</h1>';
