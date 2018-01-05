@@ -91,19 +91,10 @@
 															</tr>';
 											}
 										?>
-<<<<<<< HEAD
-                      <?php include('../include/modal.php');?>
-                  </tbody>
-                </table>
-                <!-- /.table-responsive -->
-                <?php include('../include/btn_add.php');?>
-                <h4>
-                  Montant de la TVA:
-                  <?php
-=======
 									</tbody>
 								</table>
 								<!-- /.table-responsive -->
+								<?php include('../include/modal.php');?>
 								<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 												<div class="modal-content">
@@ -126,7 +117,7 @@
 																if(isset($_POST['submit'])){
 																	 if(is_string($_POST['type']) && strlen($_POST['type'])<21 && preg_match('#^[0-9]+$#',$_POST['montant'])) {
 																		 $dateemi = date("Y-m-d H:i:s");
-																		 $daterecouv = date("Y-m-d H:i:s", mktime(23, 59, 59, date("m")+1  , date("d"), date("Y")));
+																		 $daterecouv = date("Y-m-d H:i:s", mktime(23, 59, 59, date("m")+1 , date("d"), date("Y")));
 																		 echo '
 																		 <form id="formT" role="form" method="post" action="ajout.php">
 																		 	<input type="hidden" name="values" value="(type_t, montant_t, date_emi_t, date_recouv_t)"/>
@@ -150,24 +141,14 @@
 										</div>
 										<!-- /.modal-dialog -->
 								</div>
-								<p>Ajouter une entrée
-								<button type="button" class="btn btn-default btn-circle" data-toggle="modal" data-target="#myModal2">
-									<i class="fa fa-plus"></i>
-								</button>
-								</p>
+								<?php include('../include/btn_add.php');?>  
 								<h4>
 									Montant de la TVA:
 									<?php
->>>>>>> 29419e4f137e507df91dd3a97a88b288bde9a6a7
 										$result = $bdd->query("SELECT montant_tva FROM TVA where id_tva=1");
 										$data = $result->fetch();
 										echo '<strong>' . $data['montant_tva'].' %<strong/>';
 									?>
-                    <a href="google.com">
-											<button type="button" class="btn btn-default btn-circle">
-												<i class="fa fa-pencil"></i>
-											</button>
-										</a>
                 </h4>
               </div>
               <!-- /.panel-body -->
