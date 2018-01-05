@@ -91,19 +91,10 @@
 															</tr>';
 											}
 										?>
-<<<<<<< HEAD
-                      <?php include('../include/modal.php');?>
-                  </tbody>
-                </table>
-                <!-- /.table-responsive -->
-                <?php include('../include/btn_add.php');?>
-                <h4>
-                  Montant de la TVA:
-                  <?php
-=======
 									</tbody>
 								</table>
 								<!-- /.table-responsive -->
+								<?php include('../include/modal.php');?>
 								<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 												<div class="modal-content">
@@ -158,16 +149,11 @@
 								<h4>
 									Montant de la TVA:
 									<?php
->>>>>>> 29419e4f137e507df91dd3a97a88b288bde9a6a7
 										$result = $bdd->query("SELECT montant_tva FROM TVA where id_tva=1");
 										$data = $result->fetch();
 										echo '<strong>' . $data['montant_tva'].' %<strong/>';
 									?>
-                    <a href="google.com">
-											<button type="button" class="btn btn-default btn-circle">
-												<i class="fa fa-pencil"></i>
-											</button>
-										</a>
+                    <?php include('../include/btn_add.php');?> 
                 </h4>
               </div>
               <!-- /.panel-body -->
