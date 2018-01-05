@@ -50,7 +50,7 @@
 			<div id="page-wrapper">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Fournisseurs</h1>
+						<h1 class="page-header">Factures des clients</h1>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
@@ -59,30 +59,46 @@
 					<div class="col-lg-12">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								Liste des fournisseurs
+								Liste des factures des clients
 							</div>
 							<!-- /.panel-heading -->
 							<div class="panel-body">
 								<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
 									<thead>
 										<tr>
-											<th>Nom</th>
-											<th>Prénom</th>
-											<th>Adresse</th>
-											<th>Téléphone</th>
-											<th>E-mail</th>
+											<th>Référence</th>
+											<th>Client</th>
+											<th>Produits</th>
+											<th>Prix HT</th>
+											<th>Montant TVA</th>
+											<th>Prix TTC</th>
+											<th>Date d'émission</th>
+											<th>Date de recouvrement</th>
+											<th>État</th>
 										</tr>
 									</thead>
 									<tbody>
 										<?php
-											$result = $bdd->query("SELECT * FROM Fournisseur");
+											$result = $bdd->query("SELECT * FROM Facture_Client");
 											while($data = $result->fetch()){
+												$resultclient = $bdd->query('SELECT Nom_c, Prenom_c FROM Client Where Id_c='.$data['id_c']);
+												$dataclient = $resultclient->fetch();
+												$produits = $data['ref_p_1'].' x'.$data['qte_p_1'];
+												for($i=2;$i<=10;$i++){
+													if($data['ref_p_'.$i]){
+														$produits += '<br/>'.$data['ref_p_'.$i].' x'.$data['qte_p_'.$i];
+													}
+												}
 													echo '<tr>
-														<td>'.$data['nom_f'].'</td>'.'
-														<td>'.$data['prenom_f'].'</td>'.'
-														<td>'.$data['adresse_f'].'</td>'.'
-														<td>'.$data['tel_f'].'</td>'.'
-														<td>'.$data['email_f'].'</td>'.'
+														<td>'.$data['ref_fac_c'].'</td>'.'
+														<td>'.$dataclient['Nom_c'].' '.$dataclient['Prenom_c'].'</td>'.'
+														<td>'.$produits.'</td>'.'
+														<td>'.$data['prix_ht'].'</td>'.'
+														<td>'.$data['prix_tva'].'</td>'.'
+														<td>'.$data['prix_ttc'].'</td>'.'
+														<td>'.$data['date_emi_fac_c'].'</td>'.'
+														<td>'.$data['date_rec_fac_c'].'</td>'.'
+														<td>'.$data['paiement'].'</td>'.'
 														<td>
 																<button type="button" class="btn btn-default btn-circle">
 																		<i class="fa fa-pencil"></i>
@@ -103,22 +119,7 @@
 			</div>
 	</div>
 
-	<!-- jQuery -->
-	<script src="../vendor/jquery/jquery.min.js"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-	<!-- Metis Menu Plugin JavaScript -->
-	<script src="../vendor/metisMenu/metisMenu.min.js"></script>
-
-	<!-- Morris Charts JavaScript -->
-	<script src="../vendor/raphael/raphael.min.js"></script>
-	<script src="../vendor/morrisjs/morris.min.js"></script>
-	<script src="../data/morris-data.js"></script>
-
-	<!-- Custom Theme JavaScript -->
-	<script src="../dist/js/sb-admin-2.js"></script>
+	<?php include('../include/scripts'); ?>
 
 </body>
 
