@@ -18,7 +18,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
       <ul class="dropdown-menu dropdown-user">
-        <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i> Se déconnecter</a>
+        <li><a href="deconnexion.php"><i class="fa fa-sign-out fa-fw"></i> Se déconnecter</a>
         </li>
       </ul>
       <!-- /.dropdown-user -->
@@ -110,3 +110,5 @@
   </div>
   <!-- /.navbar-static-side -->
 </nav>
+
+<?php include('../include/session.php'); ?>
