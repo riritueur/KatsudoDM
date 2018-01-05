@@ -100,8 +100,59 @@
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
-                          <?php include('../include/btn_add.php');?>  
-                        </div>
+														<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+															<div class="modal-dialog">
+																	<div class="modal-content">
+																			<div class="modal-header">
+																					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+																					<h4 class="modal-title" id="myModalLabel">Ajouter une taxe</h4>
+																			</div>
+																			<div class="modal-body">
+																				<form role="form" class="AVAST_PAM_nonloginform" method="post">
+																					<label>Nom</label>
+																					<input class="form-control" name="nom" id="nom" required/>
+																					<label>Prénom</label>
+																					<input class="form-control" name="prenom" id="prenom" required/>
+																					<label>Adresse</label>
+																					<input class="form-control" name="adresse" id="adresse" required/>
+																					<label>Téléphone</label>
+																					<input class="form-control" name="tel" id="tel" required/>
+																					<label>E-mail</label>
+																					<input class="form-control" name="mail" id="mail" required/>
+																					<div class="modal-footer">
+																						<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+																						<button type="submit" name="submit" class="btn btn-primary">Ajouter</button>
+																					</div>
+																				</form>
+																				<?php
+																					if(isset($_POST['submit'])){
+																						 if(is_string($_POST['nom']) && strlen($_POST['nom'])<51 && is_string($_POST['prenom']) && strlen($_POST['prenom'])<51 && is_string($_POST['adresse']) && strlen($_POST['nom'])<201 && is_string($_POST['tel']) && strlen($_POST['tel']) == 10 && preg_match("#[0-9]{10}#", $_POST['tel']) && is_string($_POST['mail']) && strlen($_POST['mail']) < 51 && preg_match('#^([\w\.-]+)@([\w\.-]+)(\.[a-z]{2,4})$#',trim($_POST['mail']))) {
+																							 echo '
+																								 <form id="formT" role="form" method="post" action="ajout.php">
+																									<input type="hidden" name="values" value="(Nom_c, Prenom_c, Adresse_c, Tel_c, Email_c)"/>
+																									<input type="hidden" name="table" value="Client"/>
+																									<input type="hidden" name="red" value="client.php"/>
+																									<input type="hidden" name="a" value="'.$_POST['nom'].'"/>
+																									<input type="hidden" name="b" value="'.$_POST['prenom'].'"/>
+																									<input type="hidden" name="c" value="'.$_POST['adresse'].'"/>
+																									<input type="hidden" name="d" value="'.$_POST['tel'].'"/>
+																									<input type="hidden" name="e" value="'.$_POST['mail'].'"/>
+																								</form>
+																							 <script>document.getElementById("formT").submit();</script>';
+																						 } else {
+																							 echo 'erreur';
+																							 $_POST = array();
+																						 }
+																					}
+																				?>
+																		</div>
+																	</div>
+																	<!-- /.modal-content -->
+															</div>
+															<!-- /.modal-dialog -->
+													</div>
+													<?php include('../include/btn_add.php');?> 
+												</div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
