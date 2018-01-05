@@ -101,7 +101,37 @@
                   </tbody>
                 </table>
                 <!-- /.table-responsive -->
-								<button type="button" class="btn btn-default btn-circle">
+								<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+												<div class="modal-content">
+														<div class="modal-header">
+																<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+																<h4 class="modal-title" id="myModalLabel">Ajouter un fournisseur</h4>
+														</div>
+														<div class="modal-body">
+															<form role="form" class="AVAST_PAM_nonloginform" action="ajouter_fournisseur.php" method="post">
+																<label>Nom</label>
+																<input class="form-control" name="nom" required/>
+																<label>Prénom</label>
+																<input class="form-control" name="prenom" required/>
+																<label>Adresse</label>
+																<input class="form-control" name="adresse" required/>
+																<label>Téléphone</label>
+																<input class="form-control" name="tel" required/>
+																<label>E-mail</label>
+																<input class="form-control" name="mail" required/>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+																	<button type="submit" class="btn btn-primary">Ajouter</button>
+																</div>
+															</form>
+													</div>
+												</div>
+												<!-- /.modal-content -->
+										</div>
+										<!-- /.modal-dialog -->
+								</div>
+								<button type="button" class="btn btn-default btn-circle" data-toggle="modal" data-target="#myModal2">
 									<i class="fa fa-plus"></i>
 								</button>
               </div>
