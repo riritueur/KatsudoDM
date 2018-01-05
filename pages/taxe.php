@@ -117,7 +117,7 @@
 																if(isset($_POST['submit'])){
 																	 if(is_string($_POST['type']) && strlen($_POST['type'])<21 && preg_match('#^[0-9]+$#',$_POST['montant'])) {
 																		 $dateemi = date("Y-m-d H:i:s");
-																		 $daterecouv = date("Y-m-d H:i:s", mktime(23, 59, 59, date("m")+1  , date("d"), date("Y")));
+																		 $daterecouv = date("Y-m-d H:i:s", mktime(23, 59, 59, date("m")+1 , date("d"), date("Y")));
 																		 echo '
 																		 <form id="formT" role="form" method="post" action="ajout.php">
 																		 	<input type="hidden" name="values" value="(type_t, montant_t, date_emi_t, date_recouv_t)"/>
