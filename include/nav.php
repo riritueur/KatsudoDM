@@ -38,13 +38,13 @@
           <a href="index.php"><i class="fa fa-tasks fa-fw"></i> Tableau de bord</a>
         </li>
         <li>
-          <a href="client.php"><i class="fa fa-user fa-fw"></i> Clients</a>
+          <a href="client.php"><i class="fa fa-users fa-fw"></i> Clients</a>
         </li>
         <li>
-          <a href="employe.php"><i class="fa fa-users fa-fw"></i> Employés</a>
+          <a href="employe.php"><i class="fa fa-building fa-fw"></i> Employés</a>
         </li>
         <li>
-          <a href="fournisseur.php"><i class="fa fa-user fa-fw"></i> Fournisseurs</a>
+          <a href="fournisseur.php"><i class="fa fa-truck fa-fw"></i> Fournisseurs</a>
         </li>
         <li>
           <a href="produit.php"><i class="fa fa-shopping-cart fa-fw"></i> Produits</a>
@@ -53,13 +53,13 @@
           <a href="taxe.php"><i class="fa fa-usd fa-fw"></i> Taxes</a>
         </li>
         <li>
-          <a href="#"><i class="fa fa-wrench fa-fw"></i> Factures<span class="fa arrow"></span></a>
+          <a href="#"><i class="fa fa-book fa-fw"></i> Factures<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li>
-              <a href="facture-client.php">Clients</a>
+              <a href="facture-client.php"><i class="fa fa-users fa-fw"></i> Clients</a>
             </li>
             <li>
-              <a href="facture-fournisseur.php">Fournisseurs</a>
+              <a href="facture-fournisseur.php"><i class="fa fa-truck fa-fw"></i> Fournisseurs</a>
             </li>
           </ul>
         </li>
