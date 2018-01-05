@@ -78,20 +78,20 @@
 											$result = $bdd->query("SELECT * FROM Fournisseur");
 											while($data = $result->fetch()){
 													echo '<tr>
-																			<td>'.$data['nom_f'].'</td>'.'
-																			<td>'.$data['prenom_f'].'</td>'.'
-																			<td>'.$data['adresse_f'].'</td>'.'
-																			<td>'.$data['tel_f'].'</td>'.'
-																			<td>'.$data['email_f'].'</td>'.'
-																			<td>
-																					<button type="button" class="btn btn-default btn-circle">
-																							<i class="fa fa-pencil"></i>
-																					</button>
-																					<button type="button" class="btn btn-danger btn-circle">
-																							<i class="fa fa-times"></i>
-																					</button>
-																			</td>'.'
-																			</tr>';
+														<td>'.$data['nom_f'].'</td>'.'
+														<td>'.$data['prenom_f'].'</td>'.'
+														<td>'.$data['adresse_f'].'</td>'.'
+														<td>'.$data['tel_f'].'</td>'.'
+														<td>'.$data['email_f'].'</td>'.'
+														<td>
+																<button type="button" class="btn btn-default btn-circle">
+																		<i class="fa fa-pencil"></i>
+																</button>
+																<button type="button" class="btn btn-danger btn-circle">
+																		<i class="fa fa-times"></i>
+																</button>
+														</td>'.'
+														</tr>';
 											}
 									?>
 									</tbody>
