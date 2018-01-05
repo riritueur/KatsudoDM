@@ -89,6 +89,13 @@
 														$produits = $produits.'<br/>'.$data['ref_p_'.$i].' x'.$data['qte_p_'.$i];
 													}
 												}
+												$etat = 'error';
+												if($data['paiement'] == 0){
+													$etat = 'Non-payée';
+												}
+												if($data['paiement'] == 1){
+													$etat = 'Payée';
+												}
 													echo '<tr>
 														<td>'.$data['ref_fac_c'].'</td>'.'
 														<td>'.$dataclient['Nom_c'].' '.$dataclient['Prenom_c'].'</td>'.'
@@ -98,7 +105,7 @@
 														<td>'.$data['prix_ttc'].'</td>'.'
 														<td>'.$data['date_emi_fac_c'].'</td>'.'
 														<td>'.$data['date_rec_fac_c'].'</td>'.'
-														<td>'.$data['paiement'].'</td>'.'
+														<td>'.$etat.'</td>'.'
 														<td>
 																<button type="button" class="btn btn-default btn-circle">
 																		<i class="fa fa-pencil"></i>
