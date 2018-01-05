@@ -122,8 +122,8 @@
                     ?>
                     <?php include('../include/modal.php');?>
                   </tbody>
-                  <?php include('../include/btn_add.php');?>
                 </table>
+                 <?php include('../include/btn_add.php');?>
               </div>
             </div>
           </div>
