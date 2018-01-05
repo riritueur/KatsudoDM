@@ -92,9 +92,11 @@
                                                     </tr>';
                                     }
                                 ?>
+                                <?php include('../include/modal.php');?>  
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
+                          <?php include('../include/btn_add.php');?> 
                         </div>
 											<img class="img-thumbnail" />
                         <!-- /.panel-body -->

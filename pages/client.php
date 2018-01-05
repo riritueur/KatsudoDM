@@ -5,7 +5,7 @@
 
   
   <?php include("../include/meta.php"); ?>
-  <title>Katsuo DM - Client</title>
+  <title>Katsudo DM - Client</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -100,9 +100,7 @@
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
-                            <button type="button" class="btn btn-default btn-circle" data-toggle="modal" data-target="#myModal2">
-                                <i class="fa fa-plus"></i>
-                            </button>
+                          <?php include('../include/btn_add.php');?>  
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -118,5 +116,6 @@
 
   </div>
   <?php include('../include/scripts.php'); ?>
+
 </body>
 </html>

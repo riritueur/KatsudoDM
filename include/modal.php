@@ -11,10 +11,10 @@
             </div>
             <div class="modal-footer">
               <form role="form" method="post" action="supression.php">
-                <input class="idf" type="hidden" name="id" id="id"/>
-                <input class="nomidf" type="hidden" name="nomid" id="nomid"/>
-                <input class="tablef" type="hidden" name="table" id="table"/>
-                <input class="redf" type="hidden" name="red" id="red"/>
+                <input class="idf" type="text" name="id" id="id"/>
+                <input class="nomidf" type="text" name="nomid" id="nomid"/>
+                <input class="tablef" type="text" name="table" id="table"/>
+                <input class="redf" type="text" name="red" id="red"/>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                 <button class="btn btn-primary" type="submit">Confirmer</button>
               </form>
@@ -24,19 +24,4 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-<script>
-  $('#modalDel').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget)
-    var id = button.data('id')
-    var nomid = button.data('nomid')
-    var table = button.data('table')
-    var red = button.data('red')
-
-    var modal = $(this)
-    modal.find('.idf').val(id)
-    modal.find('.nomidf').val(nomid)
-    modal.find('.tablef').val(table)
-    modal.find('.redf').val(red)
-})
-</script>
 <!-- MODAL END -->

@@ -3,9 +3,9 @@
 
 <head>
   <?php include('../include/meta.php'); ?>
-  
+ 
   <?php
-    
+    echo 'DELETE FROM '. $_POST['table'] .' WHERE '. $_POST['nomid'] .' = '. $_POST['id'];
     if(!empty($_POST['id']) && !empty($_POST['nomid']) 
        && !empty($_POST['table']) && !empty($_POST['red'])) {
       

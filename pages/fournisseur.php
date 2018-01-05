@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Katsuo DM - Fournisseurs</title>
+  <title>Katsudo DM - Fournisseurs</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -91,42 +91,50 @@
                                           <button type="button" class="btn btn-default btn-circle">
                                               <i class="fa fa-pencil"></i>
                                           </button>
-                                          <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="'. $data['id_f'] .'"  data-nomid="id_f" data-table="Fournisseur" data-red="fournisseur.php">
-																							<i class="fa fa-times"></i>
-																					</button>
+                                          <button type="button" class="btn btn-danger btn-circle"       data-toggle="modal" data-target="#modalDel" data-id="'. $data['id_f'] .'"  data-nomid="Id_f" data-table="Fournisseur" data-red="fournisseur.php">
+                                            <i class="fa fa-times"></i>
+                                          </button>
                                       </td>'.'
                                       </tr>';
                       }
-                  ?>
-										
-										<div class="modal fade" id="modalDel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-											<div class="modal-dialog">
-													<div class="modal-content">
-															<div class="modal-header">
-																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-																	<h4 class="modal-title" id="myModalLabel">Confirmer la suppression</h4>
-															</div>
-															<div class="modal-body">
-																	Etes vous sûr de vouloir supprimer cette entrée dans la base de donnée ?
-															</div>
-															<div class="modal-footer">
-																<form role="form" method="post" action="supression.php">
-																	<input class="idf" type="hidden" name="id" id="id"/>
-																	<input class="nomidf" type="hidden" name="nomid" id="nomid"/>
-																	<input class="tablef" type="hidden" name="table" id="table"/>
-																	<input class="redf" type="hidden" name="red" id="red"/>
-																	<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-																	<button class="btn btn-primary" type="submit">Confirmer</button>
-																</form>
-															</div>
-													</div>
-													<!-- /.modal-content -->
-											</div>
-											<!-- /.modal-dialog -->
-									</div>
+                      ?>
+                      <?php include('../include/modal.php');?>
                   </tbody>
                 </table>
                 <!-- /.table-responsive -->
+<<<<<<< HEAD
+                <?php include('../include/btn_add.php');?>
+                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Ajouter un fournisseur</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form role="form" class="AVAST_PAM_nonloginform" action="ajouter_fournisseur.php" method="post">
+                          <label>Nom</label>
+                          <input class="form-control" name="nom" required/>
+                          <label>Prénom</label>
+                          <input class="form-control" name="prenom" required/>
+                          <label>Adresse</label>
+                          <input class="form-control" name="adresse" required/>
+                          <label>Téléphone</label>
+                          <input class="form-control" name="tel" required/>
+                          <label>E-mail</label>
+                          <input class="form-control" name="mail" required/>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+=======
 								<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 												<div class="modal-content">
@@ -135,31 +143,56 @@
 																<h4 class="modal-title" id="myModalLabel">Ajouter un fournisseur</h4>
 														</div>
 														<div class="modal-body">
-															<form role="form" class="AVAST_PAM_nonloginform" action="ajouter_fournisseur.php" method="post">
+															<form role="form" class="AVAST_PAM_nonloginform" method="post">
 																<label>Nom</label>
-																<input class="form-control" name="nom" required/>
+																<input class="form-control" name="nom" id="nom" required/>
 																<label>Prénom</label>
-																<input class="form-control" name="prenom" required/>
+																<input class="form-control" name="prenom" id="prenom" required/>
 																<label>Adresse</label>
-																<input class="form-control" name="adresse" required/>
+																<input class="form-control" name="adresse" id="adresse" required/>
 																<label>Téléphone</label>
-																<input class="form-control" name="tel" required/>
+																<input class="form-control" name="tel" id="tel" required/>
 																<label>E-mail</label>
-																<input class="form-control" name="mail" required/>
+																<input class="form-control" name="mail" id="mail" required/>
 																<div class="modal-footer">
 																	<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-																	<button type="submit" class="btn btn-primary">Ajouter</button>
+																	<button type="submit" name="submit" class="btn btn-primary">Ajouter</button>
 																</div>
 															</form>
+															<?php
+																if(isset($_POST['submit'])){
+																	 if(is_string($_POST['nom']) && strlen($_POST['nom'])<51 && is_string($_POST['prenom']) && strlen($_POST['prenom'])<51 && is_string($_POST['adresse']) && strlen($_POST['nom'])<201 && is_string($_POST['tel']) && strlen($_POST['tel']) == 10 && preg_match("#[0-9]{10}#", $_POST['tel']) && is_string($_POST['mail']) && strlen($_POST['mail']) < 51 && preg_match('#^([\w\.-]+)@([\w\.-]+)(\.[a-z]{2,4})$#',trim($_POST['mail']))) {
+																		 //$_POST['test'] = $_POST['preg']*2;
+																		 echo '
+																		 <form id="formT" role="form" method="post" action="ajout.php">
+																		 	<input type="hidden" name="values" value="(nom_f, prenom_f, adresse_f, tel_f, email_f)"/>
+																			<input type="hidden" name="table" value="Fournisseur"/>
+																			<input type="hidden" name="red" value="fournisseur.php"/>
+																			<input type="hidden" name="a" value="'.$_POST['nom'].'"/>
+																			<input type="hidden" name="b" value="'.$_POST['prenom'].'"/>
+																			<input type="hidden" name="c" value="'.$_POST['adresse'].'"/>
+																			<input type="hidden" name="d" value="'.$_POST['tel'].'"/>
+																			<input type="hidden" name="e" value="'.$_POST['mail'].'"/>
+																		</form>
+																		 <script>document.getElementById("formT").submit();</script>';
+																	 } else {
+																		 echo 'erreur';
+																		 $_POST = array();
+																	 }
+																}
+															?>
 													</div>
 												</div>
 												<!-- /.modal-content -->
 										</div>
 										<!-- /.modal-dialog -->
 								</div>
+								<p>Ajouter une entrée
 								<button type="button" class="btn btn-default btn-circle" data-toggle="modal" data-target="#myModal2">
 									<i class="fa fa-plus"></i>
 								</button>
+								</p>
+>>>>>>> 29419e4f137e507df91dd3a97a88b288bde9a6a7
               </div>
               <!-- /.panel-body -->
             </div>
