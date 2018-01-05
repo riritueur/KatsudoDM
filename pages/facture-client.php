@@ -86,7 +86,7 @@
 												$produits = $data['ref_p_1'].' x'.$data['qte_p_1'];
 												for($i=2;$i<=10;$i++){
 													if($data['ref_p_'.$i]){
-														$produits += '<br/>'.$data['ref_p_'.$i].' x'.$data['qte_p_'.$i];
+														$produits = $produits.'<br/>'.$data['ref_p_'.$i].' x'.$data['qte_p_'.$i];
 													}
 												}
 													echo '<tr>
