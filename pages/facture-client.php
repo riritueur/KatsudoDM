@@ -113,6 +113,9 @@
 																<button type="button" class="btn btn-danger btn-circle">
 																		<i class="fa fa-times"></i>
 																</button>
+																<button type="button" class="btn btn-default btn-circle">
+																		<i class="fa fa-download"></i>
+																</button>
 														</td>'.'
 														</tr>';
 											}
