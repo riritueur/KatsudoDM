@@ -101,6 +101,9 @@
                   </tbody>
                 </table>
                 <!-- /.table-responsive -->
+								<button type="button" class="btn btn-default btn-circle">
+									<i class="fa fa-plus"></i>
+								</button>
               </div>
               <!-- /.panel-body -->
             </div>
