@@ -141,11 +141,7 @@
 										</div>
 										<!-- /.modal-dialog -->
 								</div>
-								<p>Ajouter une entrée
-								<button type="button" class="btn btn-default btn-circle" data-toggle="modal" data-target="#myModal2">
-									<i class="fa fa-plus"></i>
-								</button>
-								</p>
+								<?php include('../include/btn_add.php');?>  
 								<h4>
 									Montant de la TVA:
 									<?php
@@ -153,7 +149,6 @@
 										$data = $result->fetch();
 										echo '<strong>' . $data['montant_tva'].' %<strong/>';
 									?>
-                    <?php include('../include/btn_add.php');?> 
                 </h4>
               </div>
               <!-- /.panel-body -->

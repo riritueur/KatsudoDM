@@ -80,20 +80,20 @@
                                     $result = $bdd->query("SELECT * FROM Client");
                                     while($data = $result->fetch()){
                                         echo '<tr>
-                                                <td>'.$data['Nom_c'].'</td>'.'
-                                                <td>'.$data['Prenom_c'].'</td>'.'
-                                                <td>'.$data['Adresse_c'].'</td>'.'
-                                                <td>'.$data['Tel_c'].'</td>'.'
-                                                <td>'.$data['Email_c'].'</td>'.'
-                                                <td>
-                                                    <button type="button" class="btn btn-default btn-circle">
-                                                        <i class="fa fa-pencil"></i>
-                                                    </button>
-                                                    <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="'. $data['Id_c'] .'"  data-nomid="Id_c" data-table="Client" data-red="client.php">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>'.'
-                                                </tr>';
+																							<td>'.$data['Nom_c'].'</td>'.'
+																							<td>'.$data['Prenom_c'].'</td>'.'
+																							<td>'.$data['Adresse_c'].'</td>'.'
+																							<td>'.$data['Tel_c'].'</td>'.'
+																							<td>'.$data['Email_c'].'</td>'.'
+																							<td>
+																									<button type="button" class="btn btn-default btn-circle">
+																											<i class="fa fa-pencil"></i>
+																									</button>
+																									<button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="'. $data['Id_c'] .'"  data-nomid="Id_c" data-table="Client" data-red="client.php">
+																											<i class="fa fa-times"></i>
+																									</button>
+																							</td>'.'
+																							</tr>';
                                     }
                                 ?>
                                 <?php include('../include/modal.php');?>  
