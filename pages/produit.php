@@ -38,14 +38,14 @@
     <?php include("../include/nav.php"); ?>
 
     <?php
-					try{
-						$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
-					}
-					catch (Exception $e)
-					{
-        		die('Erreur : ' . $e->getMessage());
-					}
-				?>
+        try{
+            $bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
+        }
+        catch (Exception $e)
+        {
+    die('Erreur : ' . $e->getMessage());
+        }
+    ?>
 
         <div id="page-wrapper">
             <div class="row">
