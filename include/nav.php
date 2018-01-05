@@ -1,3 +1,5 @@
+<?php include('../include/session.php'); ?>
+
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
   <div class="navbar-header">
@@ -15,7 +17,9 @@
     <!-- /.dropdown -->
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+        Bonjour <?php echo $_COOKIE['login']; ?>
+        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i> 
+        
                     </a>
       <ul class="dropdown-menu dropdown-user">
         <li><a href="deconnexion.php"><i class="fa fa-sign-out fa-fw"></i> Se déconnecter</a>
@@ -31,7 +35,7 @@
     <div class="sidebar-nav navbar-collapse">
       <ul class="nav" id="side-menu">
         <li>
-          <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Tableau de bord</a>
+          <a href="index.php"><i class="fa fa-tasks fa-fw"></i> Tableau de bord</a>
         </li>
         <li>
           <a href="client.php"><i class="fa fa-user fa-fw"></i> Clients</a>
@@ -110,5 +114,3 @@
   </div>
   <!-- /.navbar-static-side -->
 </nav>
-
-<?php include('../include/session.php'); ?>
