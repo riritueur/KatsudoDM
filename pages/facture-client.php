@@ -160,7 +160,6 @@
 															}
 														?>
 													</select>
-													<label>Produits</label>
 													</br>
 													<?php
 														for($i=1;$i<11;$i++){
