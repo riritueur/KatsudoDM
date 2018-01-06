@@ -116,7 +116,7 @@
                                   <td>'.$data['prix_ttc'].'</td>'.'
                                   <td>'.$data['date_emi_fac_c'].'</td>'.'
                                   <td>'.$data['date_rec_fac_c'].'</td>'.'
-                                  <td';
+                                  <td ';
 
                                     if($etat == 'Payée')
                                       echo 'class="text-success"';
