@@ -111,7 +111,12 @@
                                         <td>'.$data['montant_ttc_fac_f'].'</td>'.'
                                         <td>'.$data['date_emi_fac_f'].'</td>'.'
                                         <td>'.$data['date_rec_fac_f'].'</td>'.'
-                                        <td>'.$etat.'</td>'.'
+                                        <td ';
+                                          if($etat == 'Payée')
+                                            echo 'class="text-success"';
+                                          else echo 'class="text-danger"';
+
+                                        echo '> <strong>'.$etat.' </strong></td>'.'
                                         <td>
                                                 <button type="button" class="btn btn-default btn-circle">
                                                         <i class="fa fa-pencil"></i>
@@ -176,28 +181,28 @@
                         <?php
                           if(isset($_POST['submit'])){
                                if(strlen($_POST['ref'])<21 && strlen($_POST['desc'])<201 && preg_match('#^[0-9]+$#',$_POST['prixht']) && ($_POST['etat'] == "1" || $_POST['etat'] == "0")) {
-																	$dateemi = date("Y-m-d H:i:s");
-																	$daterecouv = date("Y-m-d H:i:s", mktime(23, 59, 59, date("m")+1 , date("d"), date("Y")));
-																	$resulttva = $bdd->query("SELECT montant_tva FROM TVA WHERE id_tva=1");
-																	$valeurtva = $resulttva->fetch();
-																	$montanttva = round((intval($_POST['prixht'])*intval($valeurtva['montant_tva']))/100);
-																	$prixttc = $_POST['prixht'] + $montanttva;
-																	echo '
-																	<form id="formT" role="form" method="post" action="ajout.php">
-																		<input type="hidden" name="values" value="(id_f, ref_fac_f, desc_fac_f, date_emi_fac_f, date_rec_fac_f, montant_ht_fac_f, montant_tva_fac_f, montant_ttc_fac_f, paiement_fac_f)"/>
-																		<input type="hidden" name="table" value="Facture_Fournisseur"/>
-																		<input type="hidden" name="red" value="facture-fournisseur.php"/>
-																		<input type="hidden" name="a" value="'.$_POST['fourn'].'"/>
-																		<input type="hidden" name="b" value="'.$_POST['ref'].'"/>
-																		<input type="hidden" name="c" value="'.$_POST['desc'].'"/>
-																		<input type="hidden" name="d" value="'.$dateemi.'"/>
-																		<input type="hidden" name="e" value="'.$daterecouv.'"/>
-																		<input type="hidden" name="f" value="'.$_POST['prixht'].'"/>
-																		<input type="hidden" name="g" value="'.$montanttva.'"/>
-																		<input type="hidden" name="h" value="'.$prixttc.'"/>
-																		<input type="hidden" name="i" value="'.$_POST['etat'].'"/>
-																	</form>
-																	 <script>document.getElementById("formT").submit();</script>';
+                              $dateemi = date("Y-m-d H:i:s");
+                              $daterecouv = date("Y-m-d H:i:s", mktime(23, 59, 59, date("m")+1 , date("d"), date("Y")));
+                              $resulttva = $bdd->query("SELECT montant_tva FROM TVA WHERE id_tva=1");
+                              $valeurtva = $resulttva->fetch();
+                              $montanttva = round((intval($_POST['prixht'])*intval($valeurtva['montant_tva']))/100);
+                              $prixttc = $_POST['prixht'] + $montanttva;
+                              echo '
+                              <form id="formT" role="form" method="post" action="ajout.php">
+                                  <input type="hidden" name="values" value="(id_f, ref_fac_f, desc_fac_f, date_emi_fac_f, date_rec_fac_f, montant_ht_fac_f, montant_tva_fac_f, montant_ttc_fac_f, paiement_fac_f)"/>
+                                  <input type="hidden" name="table" value="Facture_Fournisseur"/>
+                                  <input type="hidden" name="red" value="facture-fournisseur.php"/>
+                                  <input type="hidden" name="a" value="'.$_POST['fourn'].'"/>
+                                  <input type="hidden" name="b" value="'.$_POST['ref'].'"/>
+                                  <input type="hidden" name="c" value="'.$_POST['desc'].'"/>
+                                  <input type="hidden" name="d" value="'.$dateemi.'"/>
+                                  <input type="hidden" name="e" value="'.$daterecouv.'"/>
+                                  <input type="hidden" name="f" value="'.$_POST['prixht'].'"/>
+                                  <input type="hidden" name="g" value="'.$montanttva.'"/>
+                                  <input type="hidden" name="h" value="'.$prixttc.'"/>
+                                  <input type="hidden" name="i" value="'.$_POST['etat'].'"/>
+                              </form>
+                               <script>document.getElementById("formT").submit();</script>';
                                } else {
                                    echo 'erreur';
                                    $_POST = array();
