@@ -2,8 +2,6 @@
 <html lang="fr">
 
 <head>
-
-
   <?php include("../include/meta.php"); ?>
   <title>Katsudo DM - Client</title>
 

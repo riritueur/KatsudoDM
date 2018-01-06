@@ -147,8 +147,9 @@
                   <!-- /.modal-dialog -->
                 </div>
                 <?php include('../include/btn_add.php');?>
+                <br/>
                 <h4>
-                  Montant de la TVA:
+                 Taux de TVA:
                   <?php
                       $result = $bdd->query("SELECT montant_tva FROM TVA where id_tva=1");
                       $data = $result->fetch();

@@ -4,7 +4,6 @@
 <head>
 
   <?php include("../include/meta.php"); ?>
-
   <title>Katsudo DM - Produits</title>
 
   <!-- Bootstrap Core CSS -->
