@@ -137,11 +137,11 @@
                                   </tr>';
                       }
                     ?>
-										<?php include('../include/modal.php');?>
+                      <?php include('../include/modal.php');?>
                   </tbody>
                 </table>
                 <?php include('../include/btn_add.php');?>
-								<?php
+                <?php
 									$resultclilist = $bdd->query('SELECT Id_c, Nom_c, Prenom_c FROM Client');
 									$resultprodlist = $bdd->query('SELECT ref_p FROM Produit');
 									$selectprod = '';
@@ -149,25 +149,25 @@
 										$selectprod = $selectprod.'<option value="'.$dataprodlist['ref_p'].'">'.$dataprodlist['ref_p'].'</option>';
 									}
 								?>
-								<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Ajouter une facture de client</h4>
-                      </div>
-                      <div class="modal-body">
-                        <form role="form" class="AVAST_PAM_nonloginform" method="post">
-                          <label>Client</label>
-                          <select class="form-control" name="cli" id="cli" required>
+                  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">Ajouter une facture de client</h4>
+                        </div>
+                        <div class="modal-body">
+                          <form role="form" class="AVAST_PAM_nonloginform" method="post">
+                            <label>Client</label>
+                            <select class="form-control" name="cli" id="cli" required>
 														<?php
 															while($dataclilist = $resultclilist->fetch()){
 																echo '<option value="'.$dataclilist['Id_c'].'">'.$dataclilist['Nom_c'].' '.$dataclilist['Prenom_c'].'</option>';
 															}
 														?>
 													</select>
-													</br>
-													<?php
+                            </br>
+                            <?php
 														for($i=1;$i<11;$i++){
 															echo '
 																<div class="form-row">
@@ -185,23 +185,23 @@
 															';
 														}
 													?>
-													<label>État</label>
-                          <div class="radio">
-														<label>
+                              <label>État</label>
+                              <div class="radio">
+                                <label>
 															<input type="radio" name="etat" id="nopaye" value="0" checked/>Non-payée
 														</label>
-													</div>
-													<div class="radio">
-														<label>
+                              </div>
+                              <div class="radio">
+                                <label>
 															<input type="radio" name="etat" id="paye" value="1"/>Payée
 														</label>
-													</div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                            <button type="submit" name="submit" class="btn btn-primary">Ajouter</button>
-                          </div>
-                        </form>
-                        <?php
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                <button type="submit" name="submit" class="btn btn-primary">Ajouter</button>
+                              </div>
+                          </form>
+                          <?php
                           if(isset($_POST['submit'])){
                                if(($_POST['etat'] == "1" || $_POST['etat'] == "0") && intval($_POST['qte1']) > 0 && is_string($_POST['qte1'])){
                           $result_nb_fact = $bdd->query("SELECT valeur FROM Numero_Facture_Client WHERE id_num=1;");
@@ -276,12 +276,13 @@
                                }
                           }
                       ?>
+                        </div>
                       </div>
+                      <!-- /.modal-content -->
                     </div>
-                    <!-- /.modal-content -->
+                    <!-- /.modal-dialog -->
                   </div>
-                  <!-- /.modal-dialog -->
-                </div>
+                  
               </div>
             </div>
           </div>
