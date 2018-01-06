@@ -111,7 +111,12 @@
                                         <td>'.$data['montant_ttc_fac_f'].'</td>'.'
                                         <td>'.$data['date_emi_fac_f'].'</td>'.'
                                         <td>'.$data['date_rec_fac_f'].'</td>'.'
-                                        <td>'.$etat.'</td>'.'
+                                        <td ';
+                                          if($etat == 'Payée')
+                                            echo 'class="text-success"';
+                                          else echo 'class="text-danger"';
+
+                                        echo '> <strong>'.$etat.' </strong></td>'.'
                                         <td>
                                                 <button type="button" class="btn btn-default btn-circle">
                                                         <i class="fa fa-pencil"></i>

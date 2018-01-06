@@ -122,7 +122,7 @@
                                       echo 'class="text-success"';
                                     else echo 'class="text-danger"';
 
-                                  echo '>'.$etat.'</td>'.'
+                                  echo '> <strong>'.$etat.' </strong></td>'.'
                                   <td>
                                     <button type="button" class="btn btn-default btn-circle">
                                                     <i class="fa fa-pencil"></i>
