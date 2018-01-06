@@ -11,10 +11,10 @@
             </div>
             <div class="modal-footer">
               <form role="form" method="post" action="supression.php">
-                <input class="idf" type="text" name="id" id="id"/>
-                <input class="nomidf" type="text" name="nomid" id="nomid"/>
-                <input class="tablef" type="text" name="table" id="table"/>
-                <input class="redf" type="text" name="red" id="red"/>
+                <input class="idf" type="hidden" name="id" id="id"/>
+                <input class="nomidf" type="hidden" name="nomid" id="nomid"/>
+                <input class="tablef" type="hidden" name="table" id="table"/>
+                <input class="redf" type="hidden" name="red" id="red"/>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                 <button class="btn btn-primary" type="submit">Confirmer</button>
               </form>

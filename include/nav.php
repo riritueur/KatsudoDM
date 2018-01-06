@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 
-     <a class="block" href="index.php"><img src="../ressource/icon/DM_logo.png" alt="logo" class="logo img-thumbnail" width="78" /></a>
+     <a class="block" href="index.php"><img src="../ressource/image/DM_logo.svg" alt="logo" class="logo img-thumbnail" width="50" /></a>
     
     <a class="navbar-brand" href="index.php">Katsudo DM</a>
   </div>
