@@ -9,6 +9,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                
+     <a class="block" href="index.php"><img src="../ressource/icon/DM_logo.png" alt="logo" class="logo img-thumbnail" width="78" /></a>
+    
     <a class="navbar-brand" href="index.php">Katsudo DM</a>
   </div>
   <!-- /.navbar-header -->

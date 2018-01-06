@@ -124,15 +124,15 @@
 
                                   echo '>'.$etat.'</td>'.'
                                   <td>
-																		<button type="button" class="btn btn-default btn-circle">
-																						<i class="fa fa-pencil"></i>
-																		</button>
-																		<button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="'. $data['id_fac_c'] .'"  data-nomid="id_fac_c" data-table="Facture_Client" data-red="facture-client.php">
-																		<i class="fa fa-times"></i>
-																		</button>
-																		<button type="button" class="btn btn-default btn-circle">
-																						<i class="fa fa-download"></i>
-																		</button>
+                                    <button type="button" class="btn btn-default btn-circle">
+                                                    <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="'. $data['id_fac_c'] .'"  data-nomid="id_fac_c" data-table="Facture_Client" data-red="facture-client.php">
+                                    <i class="fa fa-times"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-default btn-circle">
+                                                    <i class="fa fa-download"></i>
+                                    </button>
                                   </td>'.'
                                   </tr>';
                       }
