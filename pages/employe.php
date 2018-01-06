@@ -81,6 +81,16 @@
                     </tr>
                   </thead>
                   <tbody>
+                   <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
                     <?php
                       $result = $bdd->query("SELECT * FROM Salarie");
                       while($data = $result->fetch()){

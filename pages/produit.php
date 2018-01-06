@@ -73,6 +73,12 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
                     <?php
                         $result = $bdd->query("SELECT * FROM Produit");
                         while($data = $result->fetch()){
@@ -92,7 +98,7 @@
                                   </tr>';
                         }
                     ?>
-                    <?php include('../include/modal.php');?>
+                      <?php include('../include/modal.php');?>
                   </tbody>
                 </table>
                 <!-- /.table-responsive -->

@@ -38,14 +38,14 @@
     <?php include("../include/nav.php"); ?>
 
     <?php
-					try{
-						$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
-					}
-					catch (Exception $e)
-					{
-        		die('Erreur : ' . $e->getMessage());
-					}
-				?>
+        try{
+            $bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
+        }
+        catch (Exception $e)
+        {
+    die('Erreur : ' . $e->getMessage());
+        }
+    ?>
 
       <div id="page-wrapper">
         <div class="row">
@@ -78,6 +78,17 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
                     <?php
                       $result = $bdd->query("SELECT * FROM Facture_Client");
                       while($data = $result->fetch()){
@@ -120,10 +131,10 @@
                                   </tr>';
                       }
                     ?>
-                    <?php include('../include/modal.php');?>
+                      <?php include('../include/modal.php');?>
                   </tbody>
                 </table>
-                 <?php include('../include/btn_add.php');?>
+                <?php include('../include/btn_add.php');?>
               </div>
             </div>
           </div>
