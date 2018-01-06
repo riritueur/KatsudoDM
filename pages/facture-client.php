@@ -152,10 +152,8 @@
                       </div>
                       <div class="modal-body">
                         <form role="form" class="AVAST_PAM_nonloginform" method="post">
-                          <label>Référence</label>
-                          <input class="form-control" name="ref" id="ref" required/>
                           <label>Client</label>
-                          <select class="form-control" name="fourn" id="fourn" required>
+                          <select class="form-control" name="cli" id="cli" required>
 														<?php
 															while($dataclilist = $resultclilist->fetch()){
 																echo '<option value="'.$dataclilist['Id_c'].'">'.$dataclilist['Nom_c'].' '.$dataclilist['Prenom_c'].'</option>';
@@ -164,22 +162,24 @@
 													</select>
 													<label>Produits</label>
 													</br>
-													<div class="form-group">
-														<label>Produit 1</label>
-														<select class="form-control" name="prod1" id="prod1" required>
-															<?php
-																echo $selectprod;
-															?>
-														</select>
-														<label>Quantité produit 1</label>
-														<input class="form-control" name="qte1" id="qte1" value="0" required/>
-													</div>
-													<label>Produit 2</label>
-                          <select class="form-control" name="fourn" id="fourn" required>
-														<?php
-															echo $selectprod;
-														?>
-													</select>
+													<?php
+														for($i=1;$i<11;$i++){
+															echo '
+																<div class="form-row">
+																	<div class="form-group col-md-6">
+																		<label>Produit '.$i.'</label>
+																		<select class="form-control" name="prod'.$i.'" id="prod'.$i.'" required>
+																				'.$selectprod.'
+																		</select>
+																	</div>
+																	<div class="form-group col-md-6">
+																		<label>Quantité produit '.$i.'</label>
+																		<input class="form-control" name="qte'.$i.'" id="qte'.$i.'" value="0" required/>
+																	</div>
+																</div>
+															';
+														}
+													?>
 													<label>Prix HT</label>
                           <input class="form-control" name="prixht" id="prixht" required/>
 													<label>État</label>
@@ -200,27 +200,60 @@
                         </form>
                         <?php
                           if(isset($_POST['submit'])){
-                               if(strlen($_POST['ref'])<21 && strlen($_POST['desc'])<201 && preg_match('#^[0-9]+$#',$_POST['prixht']) && ($_POST['etat'] == "1" || $_POST['etat'] == "0")) {
+                               if(strlen($_POST['desc'])<201 && preg_match('#^[0-9]+$#',$_POST['prixht']) && ($_POST['etat'] == "1" || $_POST['etat'] == "0") && intval($_POST['qte1']) > 0 && is_string($_POST['qte1'])){
+																 	$result_nb_fact = $bdd->query("SELECT valeur FROM Numero_Facture_Client WHERE id_num=1");
+																 	$data_nb_fact = $result_nb_fact->fetch();
+																 	$ref = 'F-2018-'.$data_nb_fact;
+																 
 																	$dateemi = date("Y-m-d H:i:s");
 																	$daterecouv = date("Y-m-d H:i:s", mktime(23, 59, 59, date("m")+1 , date("d"), date("Y")));
+																 
 																	$resulttva = $bdd->query("SELECT montant_tva FROM TVA WHERE id_tva=1");
 																	$valeurtva = $resulttva->fetch();
 																	$montanttva = round((intval($_POST['prixht'])*intval($valeurtva['montant_tva']))/100);
 																	$prixttc = $_POST['prixht'] + $montanttva;
+																 
+																 	for($j=2;$j<11;$j++){
+																		if(intval($_POST['qte'.$j]) == 0){
+																			$_POST['qte'.$j] = '';
+																			$_POST['prod'.$j] = '';
+																		}
+																	}
+																 
 																	echo '
 																	<form id="formT" role="form" method="post" action="ajout.php">
-																		<input type="hidden" name="values" value="(id_f, ref_fac_f, desc_fac_f, date_emi_fac_f, date_rec_fac_f, montant_ht_fac_f, montant_tva_fac_f, montant_ttc_fac_f, paiement_fac_f)"/>
+																		<input type="hidden" name="values" value="(id_c, ref_fac_c, date_emi_fac_c, date_rec_fac_c, tva, ref_p_1, qte_p_1, ref_p_2, qte_p_2, ref_p_3, qte_p_3, ref_p_4, qte_p_4, ref_p_5, qte_p_5, ref_p_6, qte_p_6, ref_p_7, qte_p_7, ref_p_8, qte_p_8, ref_p_9, qte_p_9, ref_p_10, qte_p_10, prix_ht, prix_tva, prix_ttc, paiement)"/>
 																		<input type="hidden" name="table" value="Facture_Fournisseur"/>
 																		<input type="hidden" name="red" value="facture-fournisseur.php"/>
-																		<input type="hidden" name="a" value="'.$_POST['fourn'].'"/>
-																		<input type="hidden" name="b" value="'.$_POST['ref'].'"/>
-																		<input type="hidden" name="c" value="'.$_POST['desc'].'"/>
-																		<input type="hidden" name="d" value="'.$dateemi.'"/>
-																		<input type="hidden" name="e" value="'.$daterecouv.'"/>
-																		<input type="hidden" name="f" value="'.$_POST['prixht'].'"/>
-																		<input type="hidden" name="g" value="'.$montanttva.'"/>
-																		<input type="hidden" name="h" value="'.$prixttc.'"/>
-																		<input type="hidden" name="i" value="'.$_POST['etat'].'"/>
+																		<input type="hidden" name="a" value="'.$_POST['cli'].'"/>
+																		<input type="hidden" name="b" value="'.$ref.'"/>
+																		<input type="hidden" name="c" value="'.$dateemi.'"/>
+																		<input type="hidden" name="d" value="'.$daterecouv.'"/>
+																		<input type="hidden" name="e" value="'.$valeurtva['montant_tva'].'"/>
+																		<input type="hidden" name="f" value="'.$_POST['prod1'].'"/>
+																		<input type="hidden" name="g" value="'.$_POST['qte1'].'"/>
+																		<input type="hidden" name="h" value="'.$_POST['prod2'].'"/>
+																		<input type="hidden" name="i" value="'.$_POST['qte2'].'"/>
+																		<input type="hidden" name="j" value="'.$_POST['prod3'].'"/>
+																		<input type="hidden" name="k" value="'.$_POST['qte3'].'"/>
+																		<input type="hidden" name="l" value="'.$_POST['prod4'].'"/>
+																		<input type="hidden" name="m" value="'.$_POST['qte4'].'"/>
+																		<input type="hidden" name="n" value="'.$_POST['prod5'].'"/>
+																		<input type="hidden" name="o" value="'.$_POST['qte5'].'"/>
+																		<input type="hidden" name="p" value="'.$_POST['prod6'].'"/>
+																		<input type="hidden" name="q" value="'.$_POST['qte6'].'"/>
+																		<input type="hidden" name="r" value="'.$_POST['prod7'].'"/>
+																		<input type="hidden" name="s" value="'.$_POST['qte7'].'"/>
+																		<input type="hidden" name="t" value="'.$_POST['prod8'].'"/>
+																		<input type="hidden" name="u" value="'.$_POST['qte8'].'"/>
+																		<input type="hidden" name="v" value="'.$_POST['prod9'].'"/>
+																		<input type="hidden" name="w" value="'.$_POST['qte9'].'"/>
+																		<input type="hidden" name="x" value="'.$_POST['prod10'].'"/>
+																		<input type="hidden" name="y" value="'.$_POST['qte10'].'"/>
+																		<input type="hidden" name="z" value="'.$_POST['prixht'].'"/>
+																		<input type="hidden" name="_" value="'.$montanttva.'"/>
+																		<input type="hidden" name="-" value="'.$prixttc.'"/>
+																		<input type="hidden" name="," value="'.$_POST['etat'].'"/>
 																	</form>
 																	 <script>document.getElementById("formT").submit();</script>';
                                } else {
