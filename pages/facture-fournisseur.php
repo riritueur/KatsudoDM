@@ -78,6 +78,17 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
                     <?php
                             $result = $bdd->query("SELECT * FROM Facture_Fournisseur");
                             while($data = $result->fetch()){
@@ -105,8 +116,8 @@
                                                 <button type="button" class="btn btn-default btn-circle">
                                                         <i class="fa fa-pencil"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-danger btn-circle">
-                                                        <i class="fa fa-times"></i>
+                                                <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="'. $data['id_fac_f'] .'"  data-nomid="id_fac_f" data-table="Facture_Fournisseur" data-red="employe.php">
+                                                <i class="fa fa-times"></i>
                                                 </button>
                                                 <button type="button" class="btn btn-default btn-circle">
                                                         <i class="fa fa-download"></i>
@@ -115,7 +126,7 @@
                                         </tr>';
                             }
                     ?>
-                    <?php include('../include/modal.php');?>
+                      <?php include('../include/modal.php');?>
                   </tbody>
                 </table>
                 <!-- /.table-responsive -->

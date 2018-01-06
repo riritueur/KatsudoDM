@@ -78,6 +78,13 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
                     <?php
                       $result = $bdd->query("SELECT * FROM Fournisseur");
                       while($data = $result->fetch()){

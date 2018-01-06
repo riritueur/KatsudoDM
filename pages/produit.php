@@ -98,7 +98,7 @@
                                   </tr>';
                         }
                     ?>
-                    <?php include('../include/modal.php');?>
+                      <?php include('../include/modal.php');?>
                   </tbody>
                 </table>
                 <!-- /.table-responsive -->

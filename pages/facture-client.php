@@ -38,14 +38,14 @@
     <?php include("../include/nav.php"); ?>
 
     <?php
-					try{
-						$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
-					}
-					catch (Exception $e)
-					{
-        		die('Erreur : ' . $e->getMessage());
-					}
-				?>
+        try{
+            $bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
+        }
+        catch (Exception $e)
+        {
+    die('Erreur : ' . $e->getMessage());
+        }
+    ?>
 
       <div id="page-wrapper">
         <div class="row">
@@ -78,6 +78,17 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
                     <?php
                       $result = $bdd->query("SELECT * FROM Facture_Client");
                       while($data = $result->fetch()){
@@ -110,8 +121,8 @@
                                           <button type="button" class="btn btn-default btn-circle">
                                                   <i class="fa fa-pencil"></i>
                                           </button>
-                                          <button type="button" class="btn btn-danger btn-circle">
-                                                  <i class="fa fa-times"></i>
+                                          <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="'. $data['id_fac_c'] .'"  data-nomid="id_fac_c" data-table="Facture_Client" data-red="employe.php">
+                                          <i class="fa fa-times"></i>
                                           </button>
                                           <button type="button" class="btn btn-default btn-circle">
                                                   <i class="fa fa-download"></i>
@@ -120,10 +131,10 @@
                                   </tr>';
                       }
                     ?>
-                    <?php include('../include/modal.php');?>
+                      <?php include('../include/modal.php');?>
                   </tbody>
                 </table>
-                 <?php include('../include/btn_add.php');?>
+                <?php include('../include/btn_add.php');?>
               </div>
             </div>
           </div>
