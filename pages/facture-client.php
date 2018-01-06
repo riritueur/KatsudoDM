@@ -121,7 +121,7 @@
 																		<button type="button" class="btn btn-default btn-circle">
 																						<i class="fa fa-pencil"></i>
 																		</button>
-																		<button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="'. $data['id_fac_c'] .'"  data-nomid="id_fac_c" data-table="Facture_Client" data-red="employe.php">
+																		<button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="'. $data['id_fac_c'] .'"  data-nomid="id_fac_c" data-table="Facture_Client" data-red="facture-client.php">
 																		<i class="fa fa-times"></i>
 																		</button>
 																		<button type="button" class="btn btn-default btn-circle">
@@ -180,8 +180,6 @@
 															';
 														}
 													?>
-													<label>Prix HT</label>
-                          <input class="form-control" name="prixht" id="prixht" required/>
 													<label>État</label>
                           <div class="radio">
 														<label>
@@ -200,18 +198,26 @@
                         </form>
                         <?php
                           if(isset($_POST['submit'])){
-                               if(strlen($_POST['desc'])<201 && preg_match('#^[0-9]+$#',$_POST['prixht']) && ($_POST['etat'] == "1" || $_POST['etat'] == "0") && intval($_POST['qte1']) > 0 && is_string($_POST['qte1'])){
-																 	$result_nb_fact = $bdd->query("SELECT valeur FROM Numero_Facture_Client WHERE id_num=1");
+                               if(($_POST['etat'] == "1" || $_POST['etat'] == "0") && intval($_POST['qte1']) > 0 && is_string($_POST['qte1'])){
+																 	$result_nb_fact = $bdd->query("SELECT valeur FROM Numero_Facture_Client WHERE id_num=1;");
 																 	$data_nb_fact = $result_nb_fact->fetch();
-																 	$ref = 'F-2018-'.$data_nb_fact;
+																 	$ref = 'F-2018-'.$data_nb_fact['valeur'];
 																 
 																	$dateemi = date("Y-m-d H:i:s");
 																	$daterecouv = date("Y-m-d H:i:s", mktime(23, 59, 59, date("m")+1 , date("d"), date("Y")));
 																 
-																	$resulttva = $bdd->query("SELECT montant_tva FROM TVA WHERE id_tva=1");
+																 	$prixht = 0;
+																 	for($k=1;$k<11;$k++){
+																		$result_prix_produit = $bdd->query("SELECT prix_ht FROM Produit WHERE ref_p = '".$_POST['prod'.$k]."';");
+																		$data_prix_produit = $result_prix_produit->fetch();
+																		$prixht = $prixht + intval($data_prix_produit['prix_ht']) * intval($_POST['qte'.$k]);
+																		$result_prix_produit->closeCursor();
+																	}
+																 
+																	$resulttva = $bdd->query("SELECT montant_tva FROM TVA WHERE id_tva=1;");
 																	$valeurtva = $resulttva->fetch();
-																	$montanttva = round((intval($_POST['prixht'])*intval($valeurtva['montant_tva']))/100);
-																	$prixttc = $_POST['prixht'] + $montanttva;
+																	$montanttva = round($prixht * intval($valeurtva['montant_tva'])/100);
+																	$prixttc = $prixht + $montanttva;
 																 
 																 	for($j=2;$j<11;$j++){
 																		if(intval($_POST['qte'.$j]) == 0){
@@ -220,11 +226,14 @@
 																		}
 																	}
 																 
+																 $chg_nb_fact = $bdd->query("UPDATE Numero_Facture_Client SET valeur = ".strval(intval($data_nb_fact['valeur'])+1)." WHERE id_num = 1;");
+																 	$eeee = $chg_nb_fact->fetch();
+																 
 																	echo '
 																	<form id="formT" role="form" method="post" action="ajout.php">
 																		<input type="hidden" name="values" value="(id_c, ref_fac_c, date_emi_fac_c, date_rec_fac_c, tva, ref_p_1, qte_p_1, ref_p_2, qte_p_2, ref_p_3, qte_p_3, ref_p_4, qte_p_4, ref_p_5, qte_p_5, ref_p_6, qte_p_6, ref_p_7, qte_p_7, ref_p_8, qte_p_8, ref_p_9, qte_p_9, ref_p_10, qte_p_10, prix_ht, prix_tva, prix_ttc, paiement)"/>
-																		<input type="hidden" name="table" value="Facture_Fournisseur"/>
-																		<input type="hidden" name="red" value="facture-fournisseur.php"/>
+																		<input type="hidden" name="table" value="Facture_Client"/>
+																		<input type="hidden" name="red" value="facture-client.php"/>
 																		<input type="hidden" name="a" value="'.$_POST['cli'].'"/>
 																		<input type="hidden" name="b" value="'.$ref.'"/>
 																		<input type="hidden" name="c" value="'.$dateemi.'"/>
@@ -250,8 +259,8 @@
 																		<input type="hidden" name="w" value="'.$_POST['qte9'].'"/>
 																		<input type="hidden" name="x" value="'.$_POST['prod10'].'"/>
 																		<input type="hidden" name="y" value="'.$_POST['qte10'].'"/>
-																		<input type="hidden" name="z" value="'.$_POST['prixht'].'"/>
-																		<input type="hidden" name="_" value="'.$montanttva.'"/>
+																		<input type="hidden" name="z" value="'.$prixht.'"/>
+																		<input type="hidden" name=":" value="'.$montanttva.'"/>
 																		<input type="hidden" name="-" value="'.$prixttc.'"/>
 																		<input type="hidden" name="," value="'.$_POST['etat'].'"/>
 																	</form>
