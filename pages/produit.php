@@ -87,9 +87,6 @@
                                   <td><img height=50px src="'.$data['image_p'].'" alt='.$data['ref-p'].'/></td>'.'
                                   <td>'.$data['prix_ht'].' €</td>'.'
                                   <td>
-                                      <button type="button" class="btn btn-default btn-circle">
-                                          <i class="fa fa-pencil"></i>
-                                      </button>
                                       <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="\''. $data['ref_p'] .'\'"  data-nomid="ref_p" data-table="Produit" data-red="produit.php">
                                       <i class="fa fa-times"></i>
                                       </button>

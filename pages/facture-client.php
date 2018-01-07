@@ -305,6 +305,7 @@
                             <label>Client</label>
                             <select class="form-control" name="cli" id="cli" required>
                                 <?php
+                                    $resultclilist = $bdd->query('SELECT Id_c, Nom_c, Prenom_c FROM Client');
                                     while($dataclilist = $resultclilist->fetch()){
                                         echo '<option value="'.$dataclilist['Id_c'].'">'.$dataclilist['Nom_c'].' '.$dataclilist['Prenom_c'].'</option>';
                                     }
@@ -378,26 +379,26 @@
                                        <form id="formModify" role="form" method="post" action="modification.php"><input type="hidden" name="values"
                                             value=" ref_fac_c = \''.$_POST['ref'].'\',
                                             id_c = \''.$_POST['fourn'].'\',
-                                            ref_p_1 = \''.$_POST['montant'].'\',
-                                            qte_p_1 = '.$_POST['montant'].',
-                                            ref_p_2 = \''.$_POST['montant'].'\',
-                                            qte_p_2 = '.$_POST['montant'].',
-                                            ref_p_3 = \''.$_POST['montant'].'\',
-                                            qte_p_3 = '.$_POST['montant'].',
-                                            ref_p_4 = \''.$_POST['montant'].'\',
-                                            qte_p_4 = '.$_POST['montant'].',
-                                            ref_p_5 = \''.$_POST['montant'].'\',
-                                            qte_p_5 = '.$_POST['montant'].',
-                                            ref_p_6 = \''.$_POST['montant'].'\',
-                                            qte_p_6 = '.$_POST['montant'].',
-                                            ref_p_7 = \''.$_POST['montant'].'\',
-                                            qte_p_7 = '.$_POST['montant'].',
-                                            ref_p_8 = \''.$_POST['montant'].'\',
-                                            qte_p_8 = '.$_POST['montant'].',
-                                            ref_p_9 = \''.$_POST['montant'].'\',
-                                            qte_p_9 = '.$_POST['montant'].',
-                                            ref_p_10 = \''.$_POST['montant'].'\',
-                                            qte_p_10 = \''.$_POST['montant'].'\',
+                                            ref_p_1 = \''.$_POST['prod1'].'\',
+                                            qte_p_1 = '.$_POST['qte1'].',
+                                            ref_p_2 = \''.$_POST['prod2'].'\',
+                                            qte_p_2 = '.$_POST['qte2'].',
+                                            ref_p_3 = \''.$_POST['prod3'].'\',
+                                            qte_p_3 = '.$_POST['qte3'].',
+                                            ref_p_4 = \''.$_POST['prod4'].'\',
+                                            qte_p_4 = '.$_POST['qte4'].',
+                                            ref_p_5 = \''.$_POST['prod5'].'\',
+                                            qte_p_5 = '.$_POST['qte5'].',
+                                            ref_p_6 = \''.$_POST['prod6'].'\',
+                                            qte_p_6 = '.$_POST['qte6'].',
+                                            ref_p_7 = \''.$_POST['prod7'].'\',
+                                            qte_p_7 = '.$_POST['qte7'].',
+                                            ref_p_8 = \''.$_POST['prod8'].'\',
+                                            qte_p_8 = '.$_POST['qte8'].',
+                                            ref_p_9 = \''.$_POST['prod9'].'\',
+                                            qte_p_9 = '.$_POST['qte9'].',
+                                            ref_p_10 = \''.$_POST['prod10'].'\',
+                                            qte_p_10 = \''.$_POST['qte10'].'\',
                                             prix_tva = '. $montanttva.',
                                             paiement = '. $_POST['etat'].',
                                             prix_ttc= '.$prixttc.'  "
