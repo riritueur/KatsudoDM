@@ -143,12 +143,10 @@
                                                     <i class="fa fa-download"></i>
                                     </button>';
 																		if($etat == 'Non-payée'){
-																			
-																			
 																			echo '<button type="button" class=" relanceMail btn btn-default btn-circle"
-																						data-ref="'. $data['ref_fac_c'] .'" data-produits="'. $produits .' data-montant ="'. $data['prix_ttc'] .'" data-date="'. $data['date_rec_fac_c'] .'" data-mail="'. $dataclient['Adresse_c'] .'" >
+																						data-ref="'. $data['ref_fac_c'] .'" data-produits="'. $produits .'" data-montant ="'. $data['prix_ttc'] .'" data-date="'. $data['date_rec_fac_c'] .'" data-mail="'. $dataclient['Adresse_c'] .'" >
 																														<i class="fa fa-envelope-o"></i>
-																						</button>'
+																						</button>';
 																		}
                                   echo '</td>
                                   </tr>';
