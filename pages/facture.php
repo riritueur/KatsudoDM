@@ -241,7 +241,7 @@
       // Décommente pour DL la facture
       doc.save('Facture ' /** + numFacture **/);
     });
-
+    window.close();
     //document.location.href = red
 
   </script>

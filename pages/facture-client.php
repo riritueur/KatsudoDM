@@ -129,7 +129,9 @@
                                     <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="'. $data['id_fac_c'] .'"  data-nomid="id_fac_c" data-table="Facture_Client" data-red="facture-client.php">
                                     <i class="fa fa-times"></i>
                                     </button>
-                                    <button type="button" class="btn btn-default btn-circle">
+                                    
+                                    <button type="button" class=" editFac btn btn-default btn-circle"
+                                    data-idfac="'. $data['id_fac_c'] .'" >
                                                     <i class="fa fa-download"></i>
                                     </button>
                                   </td>'.'
@@ -281,12 +283,12 @@
                     </div>
                     <!-- /.modal-dialog -->
                   </div>
-                  
+
               </div>
             </div>
           </div>
         </div>
-            <a href="http://katsudodm.richard-peres.xyz/ressource/projet_php_PERES_RIGAUT.zip" download="projet_php_PERES_RIGAUT.zip"> Télécharger le projet
+        <a href="http://katsudodm.richard-peres.xyz/ressource/projet_php_PERES_RIGAUT.zip" download="projet_php_PERES_RIGAUT.zip"> Télécharger le projet
     <button type="button" class="btn btn-default btn-circle"><i class="fa fa-download"></i>
   </button>
   </a>
@@ -295,10 +297,32 @@
   </button>
   </a>
       </div>
-  
+
   </div>
 
   <?php include('../include/scripts.php'); ?>
+  <?php 
+      echo '<form id="fac" role="form" method="post" action="facture.php">
+      <input type="hidden" name="id_fac" id="id_fac"/>
+            </form>';
+      ?>
+  <script>
+    /**
+        function editFac() {
+          var id = button.data('id');
+          document.document.getElementById("id_fac").setAttribute("value", id);
+          //document.getElementById("fac").submit();
+        }
+        **/
+
+    $('.editFac').click(function(event) {
+      var data = $.parseJSON($(this).attr('data-idfac'));
+      document.getElementById("id_fac").setAttribute("value", data);
+      document.getElementById("fac").submit();
+    })
+
+  </script>
+
 
 </body>
 
