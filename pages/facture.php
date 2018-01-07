@@ -61,6 +61,45 @@
 </head>
 
 <body>
+	<?php
+		$result_facture = $bdd->query("SELECT * FROM Facture_Client WHERE id_fac_c = ".$_POST['id_fac']);
+		$data_facture = $result_facture->fetch();
+		$result_facture->closeCursor();
+
+		$result_client = $bdd->query("SELECT * FROM Client WHERE Id_c = ".$data_facture['id_c']);
+		$data_client = $result->client->fetch();
+		$result_client->closeCursor();
+	
+		$result_prix_produit1 = $bdd->query("SELECT prix_ht FROM Produit WHERE ref_p = ".$data_facture['ref_p_1']);
+		$data_prix_produit1 = $result_prix_produit1->fetch();
+		$result_prix_produit1->closeCursor();
+	
+		$produits = '<tr>
+									<td>'.$data_facture['ref_p_1'].'</td>
+									<td class="text-center">'.$data_facture['qte_p_1'].'</td>
+									<td class="text-center">'.strval( intval($data_facture['qte_p_1']) * intval($data_prix_produit1['prix_ht']) ).'</td>
+								</tr>';
+		
+		$total_ht = intval($data_prix_produit1['prix_ht']);
+	
+		for($i=2;$i<=10;$i++){
+				if($data_facture['ref_p_'.$i]){
+						$result_prix_produit_i = $bdd->query("SELECT prix_ht FROM Produit WHERE ref_p = ".$data_facture['ref_p_'.$i]);
+						$data_prix_produit_i = $result_prix_produit_i->fetch();
+						$result_prix_produit_i->closeCursor();
+					
+						$produit = $produit.'
+							<tr>
+								<td>'.$data_facture['ref_p_'.$i].'</td>
+								<td class="text-center">'.$data_facture['qte_p_'.$i].'</td>
+								<td class="text-center">'.strval( intval($data_facture['qte_p_'.$i]) * intval($data_prix_produit_i['prix_ht']) ).'</td>
+							</tr>';
+					
+					$total_ht = $total_ht + intval($data_prix_produit_i['prix_ht']);
+				}
+		}
+	
+	?>
 
   <div class="container-fluid">
     <div class="row">
@@ -69,12 +108,10 @@
           <img src="../ressource/image/DM_logo.svg" alt="logo" width="60" height="60" />
           <h2>Facture</h2>
           <h3 class="pull-right">
-            <?php echo "\$_POST['numFacture']";?>
+            <?php echo $_POST['id_fac'];?>
           </h3>
         </div>
         <hr>
-
-
 
         <div class="row">
           <div class="col-xs-6">
@@ -85,19 +122,16 @@
     					Mail<br>
     					Adresse 1<br>
     					Adresse 2<br>
-    					ID facture
     				</address>
           </div>
 
           <div class="col-xs-6 text-right">
             <address>
         			<strong>Client :</strong><br>
-    					Nom Prenom<br>
-    					Référence client<br>
-    					Téléphone<br>
-    					Mail<br>
-    					Adresse 1<br>
-    					Adresse 2
+    					<?php
+								echo 	$data_client['Nom_c'].' '.$data_client['Prenom_c']'</br>'
+											
+							?>
     				</address>
           </div>
         </div>
@@ -109,7 +143,7 @@
         <div class="col-xs-6 text-right">
           <address>
     					<strong>Date Facture:</strong><br>
-    					<?php echo "\$_POST['date_emi']";?>
+    					<?php echo $data_facture['date_emi_fac_c'];?>
     					<br><br>
     				</address>
         </div>
@@ -129,7 +163,7 @@
               <thead>
                 <tr>
                   <td><strong>Référence</strong></td>
-                  <td class="text-center"><strong>Désignation</strong></td>
+                  <td class="text-center"><strong>Description</strong></td>
                   <td class="text-center"><strong>Quantité</strong></td>
                   <td class="text-right"><strong>Total HT</strong></td>
                 </tr>
