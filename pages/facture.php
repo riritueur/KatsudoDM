@@ -33,6 +33,18 @@
     h5 {
       color: black;
     }
+		
+		h2, h3.pull-right{
+			font-size: 70px;
+		}
+		
+		address, h3.panel-title	{
+			font-size: 35px;
+		}
+		
+		tbody, thead{
+			font-size: 30px;
+		}
 
     .centre {
       text-align: center;
@@ -92,7 +104,7 @@
 									<td>'.$data_facture['ref_p_1'].'</td>
 									<td>'.$data_produit1['desc_p'].'</td>
 									<td class="text-center">'.$data_facture['qte_p_1'].'</td>
-									<td class="text-center">'.strval( intval($data_facture['qte_p_1']) * intval($data_produit1['prix_ht']) ).'</td>
+									<td class="text-right">'.strval( intval($data_facture['qte_p_1']) * intval($data_produit1['prix_ht']) ).'</td>
 								</tr>';
 		
 		$total_ht = intval($data_facture['qte_p_1']) * intval($data_produit1['prix_ht']);
@@ -108,7 +120,7 @@
 								<td>'.$data_facture['ref_p_'.$i].'</td>
 								<td>'.$data_produit_i['desc_p'].'</td>
 								<td class="text-center">'.$data_facture['qte_p_'.$i].'</td>
-								<td class="text-center">'.strval( intval($data_facture['qte_p_'.$i]) * intval($data_produit_i['prix_ht']) ).'</td>
+								<td class="text-right">'.strval( intval($data_facture['qte_p_'.$i]) * intval($data_produit_i['prix_ht']) ).'</td>
 							</tr>';
 					
 					$total_ht = $total_ht + intval($data_facture['qte_p_'.$i]) * intval($data_produit_i['prix_ht']);
@@ -121,7 +133,7 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="invoice-title">
-          <img src="../ressource/image/DM_logo.svg" alt="logo" width="60" height="60" />
+          <img src="../ressource/image/DM_logo.svg" alt="logo" width="100" height="100" />
           <h2>Facture</h2>
           <h3 class="pull-right">
             <?php echo $data_facture['ref_fac_c'];?>
@@ -134,10 +146,10 @@
             <address>
     				<strong>
     				Katsudo DM</strong><br>
-    					Téléphone<br>
-    					Mail<br>
-    					Adresse 1<br>
-    					Adresse 2<br>
+    					0612121212<br>
+    					katsudo@dm.com<br>
+    					12 rue de l'adresse bidon, 06000 Nice<br>
+    					Bâtiment 'RIP 1<br>
     				</address>
           </div>
 
