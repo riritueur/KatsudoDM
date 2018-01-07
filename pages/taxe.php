@@ -87,7 +87,10 @@
                                         <td>'.$data['date_emi_t'].'</td>'.'
                                         <td>'.$data['date_recouv_t'].'</td>'.'
                                         <td>
-                                          <button type="button" class="btn btn-default btn-circle"><i class="fa fa-pencil"></i>
+                                          <button type="button" class="btn btn-default btn-circle" data-toggle="modal" data-target="#modalModify" data-id="'. $data['id_t'] .'"
+                                          data-type="'. $data['type_t'] .'"
+                                          data-montant="'. $data['montant_t'] .'">
+                                                  <i class="fa fa-pencil"></i>
                                           </button>
                                           <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="'. $data['id_t'] .'"  data-nomid="id_t" data-table="Taxe" data-red="taxe.php">
                                             <i class="fa fa-times"></i>
@@ -146,6 +149,8 @@
                   </div>
                   <!-- /.modal-dialog -->
                 </div>
+                
+                
                 <?php include('../include/btn_add.php');?>
                 <br/>
                 <p>
@@ -156,6 +161,58 @@
                       echo '<strong>' . $data['montant_tva'].' %<strong/>';
                   ?>
                 </p>
+                
+                
+                <div class="modal fade" id="modalModify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="text-info modal-title" id="myModalLabel">Modifier une taxe</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form role="form" class="AVAST_PAM_nonloginform" method="post">
+                          <input type="hidden" name="id" id="id" class="idf" />
+                          <label>Type</label>
+                          <input class="form-control typef" name="type" id="type" required/>
+                          <label>Montant</label>
+                          <input class="form-control montantf" name="montant" id="montant" required/>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                            <button type="submit" name="submitModify" class="btn btn-primary">Modifier</button>
+                          </div>
+                        </form>
+                        <?php
+                          if(isset($_POST['submitModify'])){
+                               if(is_string($_POST['type']) && strlen($_POST['type'])<21 && preg_match('#^[0-9]+$#',$_POST['montant'])) {
+                                
+                                   echo '
+                                       <form id="formModify" role="form" method="post" action="modification.php">
+                                          <input type="hidden" name="values"
+                                            value=" type_t = \''.$_POST['type'].'\',
+                                            montant_t = '.$_POST['montant'].'"   
+                                          />
+                                          
+                                          <input type="hidden" name="table" value="Taxe"/>
+                                          <input type="hidden" name="id" value="'.$_POST['id'].'"/>
+                                          <input type="hidden" name="red" value="taxe.php"/>
+                                          <input type="hidden" name="nomid" value="id_t"/>
+                                          
+                                      </form>
+                                   <script>document.getElementById("formModify").submit();</script>';
+                               } else {
+                                   echo 'erreur';
+                                   $_POST = array();
+                               }
+                          }
+                      ?>
+                      </div>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+
               </div>
               <!-- /.panel-body -->
             </div>
@@ -177,6 +234,21 @@
 
   </div>
   <?php include('../include/scripts.php'); ?>
+   
+    <script>
+    $('#modalModify').on('show.bs.modal', function(event) {
+      var button = $(event.relatedTarget)
+      var id = button.data('id')
+      var type = button.data('type')
+      var montant = button.data('montant')
+
+      var modal = $(this)
+      modal.find('.idf').val(id)
+      modal.find('.typef').val(type)
+      modal.find('.montantf').val(montant)
+      
+    })
+  </script>
 
 </body>
 
