@@ -207,7 +207,7 @@
                                if(($_POST['etat'] == "1" || $_POST['etat'] == "0") && intval($_POST['qte1']) > 0 && is_string($_POST['qte1'])){
                           $result_nb_fact = $bdd->query("SELECT valeur FROM Numero_Facture_Client WHERE id_num=1;");
                           $data_nb_fact = $result_nb_fact->fetch();
-                          $ref = 'F-2018-'.$data_nb_fact['valeur'];
+                          $ref = 'F-2018-'.strval(intval($data_nb_fact['valeur'])-1);
 
                           $dateemi = date("Y-m-d H:i:s");
                           $daterecouv = date("Y-m-d H:i:s", mktime(23, 59, 59, date("m")+1 , date("d"), date("Y")));
