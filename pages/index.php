@@ -317,39 +317,61 @@
                     <!-- /.table-responsive -->
                   </div>
                   <!-- /.col-lg-8 (nested) -->
-									<div class="col-lg-3 col-md-6">
-										<div class="row">
-											<div class="panel panel-red">
-												<div class="panel-heading">
-													<div class="row">
-														<div class="col-xs-3">
-															<i class="fa fa-plus fa-5x"></i>
+									<div class="col-lg-4 col-md-6">
+										<div class="panel panel-red">
+											<div class="panel-heading">
+												<div class="row">
+													<div class="col-xs-3">
+														<i class="fa fa-plus fa-5x"></i>
+													</div>
+													<div class="col-xs-9 text-center">
+														<div class="huge">
+															<?php
+																								echo $dep.' €';
+																							?>
 														</div>
-														<div class="col-xs-9 text-center">
-															<div class="huge">
-																<?php
-																									echo $dep.' €';
-																								?>
-															</div>
-															<div>Dépenses ce mois-ci</div>
-														</div>
+														<div>Dépenses ce mois-ci</div>
 													</div>
 												</div>
 											</div>
-											<div class="panel panel-green">
-												<div class="panel-heading">
-													<div class="row">
-														<div class="col-xs-3">
-															<i class="fa fa-minus fa-5x"></i>
+										</div>
+										<div class="panel panel-green">
+											<div class="panel-heading">
+												<div class="row">
+													<div class="col-xs-3">
+														<i class="fa fa-minus fa-5x"></i>
+													</div>
+													<div class="col-xs-9 text-center">
+														<div class="huge">
+															<?php
+																								echo $montant_factures_client.' €';
+																							?>
 														</div>
-														<div class="col-xs-9 text-center">
-															<div class="huge">
-																<?php
-																									echo $montant_factures_client.' €';
-																								?>
-															</div>
-															<div>Recettes ce mois-ci</div>
+														<div>Recettes ce mois-ci</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-<?php
+																	if($benef > 0){
+																		echo 'primary';
+																	}
+																	else{
+																		echo 'yellow';
+																	}
+																?>">
+											<div class="panel-heading">
+												<div class="row">
+													<div class="col-xs-3">
+														<i class="fa fa-minus fa-5x"></i>
+													</div>
+													<div class="col-xs-9 text-center">
+														<div class="huge">
+															<?php
+																								echo $benef.' €';
+																							?>
 														</div>
+														<div>Recettes ce mois-ci</div>
 													</div>
 												</div>
 											</div>
