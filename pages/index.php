@@ -230,15 +230,15 @@
         </div>
         <!-- /.row -->
         <div class="row">
-          <div class="col-lg-8">
+          <div class="col-lg-7">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <i class="fa fa-bar-chart-o fa-fw"></i> "Comptabilité"
+                <i class="fa fa-bar-chart-o fa-fw"></i> Comptabilité
               </div>
               <!-- /.panel-heading -->
               <div class="panel-body">
                 <div class="row">
-                  <div class="col-lg-4">
+                  <div class="col-lg-5">
                     <div class="table-responsive">
                       <table class="table table-bordered table-hover table-striped">
                         <thead>
@@ -269,14 +269,14 @@
 																										
 																										if( $month <= intval(date("m", mktime(23, 59, 59, date("m") , date("d"), date("Y")))) ){
 																											
-																											$result_factures_client = $bdd->query("SELECT prix_ttc FROM Facture_Client WHERE MONTH(date_emi_fac_c) = ".$month);
+																											$result_factures_client = $bdd->query("SELECT prix_ttc FROM Facture_Client WHERE paiement = 1 AND MONTH(date_emi_fac_c) = ".$month);
 																											$montant_factures_client = 0;
 																											while($data_factures_client = $result_factures_client->fetch()){
 																												$montant_factures_client = $montant_factures_client + intval($data_factures_client['prix_ttc']);
 																											}
 																											$result_factures_client->closeCursor();																									
 
-																											$result_factures_fournisseur = $bdd->query("SELECT montant_ttc_fac_f FROM Facture_Fournisseur WHERE MONTH(date_emi_fac_f) = ".$month);
+																											$result_factures_fournisseur = $bdd->query("SELECT montant_ttc_fac_f FROM Facture_Fournisseur WHERE paiement_fac_f = 1 AND MONTH(date_emi_fac_f) = ".$month);
 																											$montant_factures_fournisseur = 0;
 																											while($data_factures_fournisseur = $result_factures_fournisseur->fetch()){
 																												$montant_factures_fournisseur = $montant_factures_fournisseur + intval($data_factures_fournisseur['montant_ttc_fac_f']);
@@ -286,6 +286,9 @@
 																											$dep = $montant_salaries + $montant_taxes + $montant_factures_fournisseur;
 																											$benef = $montant_factures_client - $dep;
 																											
+																											$dep_mois = $dep;
+																											$benef_mois = $benef;
+																											$recettes_mois = $montant_factures_client;
 																											
 																											echo '<tr>
 																															<td>'.$month.'</td>
@@ -300,12 +303,40 @@
 																														</tr>';
 																											}
 																										}
+																										else if( $month-3 <= intval(date("m", mktime(23, 59, 59, date("m") , date("d"), date("Y")))) ){
+																											
+																											$result_factures_client = $bdd->query("SELECT prix_ttc FROM Facture_Client WHERE paiement = 0 AND MONTH(date_rec_fac_c) = ".$month);
+																											$montant_factures_client = 0;
+																											while($data_factures_client = $result_factures_client->fetch()){
+																												$montant_factures_client = $montant_factures_client + intval($data_factures_client['prix_ttc']);
+																											}
+																											$result_factures_client->closeCursor();		
+																											
+																											
+																											$result_factures_fournisseur = $bdd->query("SELECT montant_ttc_fac_f FROM Facture_Fournisseur WHERE paiement_fac_f = 0 AND MONTH(date_rec_fac_f) = ".$month);
+																											$montant_factures_fournisseur = 0;
+																											while($data_factures_fournisseur = $result_factures_fournisseur->fetch()){
+																												$montant_factures_fournisseur = $montant_factures_fournisseur + intval($data_factures_fournisseur['montant_ttc_fac_f']);
+																											}
+																											$result_factures_fournisseur->closeCursor();
+																											
+																											$dep = $montant_salaries + $montant_taxes + $montant_factures_fournisseur;
+																											$benef = $montant_factures_client - $dep;
+																											
+																											echo '<tr>
+																															<td class="text-warning">'.$month.'</td>
+																															<td class="text-warning">'.$dep.' €</td>
+																															<td class="text-warning">'.$montant_factures_client.' €</td>
+																															<td class="text-warning">'.$benef.' €</td>
+																														</tr>';
+																										}
 																										else{
 																											echo '<tr>
-																														<td class="text-warning">'.$month.'</td>
-																														<td class="text-warning">'.$dep.' €</td>
-																														<td class="text-warning">'.$montant_factures_client.' €</td>
-																														<td class="text-warning">'.$benef.' €</td>';
+																															<td class="text-info">'.$month.'</td>
+																															<td class="text-info">0 €</td>
+																															<td class="text-info">0 €</td>
+																															<td class="text-info">0 €</td>
+																														</tr>';
 																										}
 																								}
 																							
@@ -322,12 +353,12 @@
 											<div class="panel-heading">
 												<div class="row">
 													<div class="col-xs-3">
-														<i class="fa fa-plus fa-5x"></i>
+														<i class="fa fa-minus fa-5x"></i>
 													</div>
 													<div class="col-xs-9 text-center">
 														<div class="huge">
 															<?php
-																								echo $dep.' €';
+																								echo $dep_mois.' €';
 																							?>
 														</div>
 														<div>Dépenses ce mois-ci</div>
@@ -339,12 +370,12 @@
 											<div class="panel-heading">
 												<div class="row">
 													<div class="col-xs-3">
-														<i class="fa fa-minus fa-5x"></i>
+														<i class="fa fa-plus fa-5x"></i>
 													</div>
 													<div class="col-xs-9 text-center">
 														<div class="huge">
 															<?php
-																								echo $montant_factures_client.' €';
+																								echo $recettes_mois.' €';
 																							?>
 														</div>
 														<div>Recettes ce mois-ci</div>
@@ -353,7 +384,7 @@
 											</div>
 										</div>
 										<div class="panel panel-<?php
-																	if($benef > 0){
+																	if($benef_mois > 0){
 																		echo 'primary';
 																	}
 																	else{
@@ -363,15 +394,22 @@
 											<div class="panel-heading">
 												<div class="row">
 													<div class="col-xs-3">
-														<i class="fa fa-minus fa-5x"></i>
+														<i class="fa fa-<?php
+																							if($benef_mois > 0){
+																								echo 'thumbs-up';
+																							}
+																							else{
+																								echo 'thumbs-down';
+																							}
+																						?> fa-5x"></i>
 													</div>
 													<div class="col-xs-9 text-center">
 														<div class="huge">
 															<?php
-																								echo $benef.' €';
+																								echo $benef_mois.' €';
 																							?>
 														</div>
-														<div>Recettes ce mois-ci</div>
+														<div>Bénéfice ce mois-ci</div>
 													</div>
 												</div>
 											</div>
@@ -386,7 +424,6 @@
           </div>
           <!-- /.row -->
         </div>
-        <!-- /#page-wrapper -->
         <a href="http://katsudodm.richard-peres.xyz/ressource/projet_php_PERES_RIGAUT.zip" download="projet_php_PERES_RIGAUT.zip"> Télécharger le projet
     <button type="button" class="btn btn-default btn-circle"><i class="fa fa-download"></i>
   </button>
@@ -403,6 +440,8 @@
       <script src="../vendor/raphael/raphael.min.js"></script>
       <script src="../vendor/morrisjs/morris.min.js"></script>
       <script src="../data/morris-data.js"></script>
+	</div>
+	<!-- page-wrapper -->
 
 </body>
 
