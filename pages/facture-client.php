@@ -123,8 +123,16 @@
 
                                         echo '> <strong>'.$etat.' </strong> </p></td>'.'
                                   <td>
-                                    <button type="button" class="btn btn-default btn-circle">
-                                                    <i class="fa fa-pencil"></i>
+                                  
+                                  
+                                    <button type="button" class="btn btn-default btn-circle" data-toggle="modal" data-target="#modalModify" 
+                                    data-id="'. $data['id_fac_c'] .'"
+                                    data-ref="'. $data['ref_fac_c'] .'"
+                                    data-fourn="'. $data['id_c'] .'"
+                                    data-desc="'. $data['desc_fac_c'] .'"
+                                    data-montant="'. $data['montant_ht_fac_c'] .'"
+                                    data-etat="'. $data['paiement_fac_c'] .'">
+                                            <i class="fa fa-pencil"></i>
                                     </button>
                                     <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="'. $data['id_fac_c'] .'"  data-nomid="id_fac_c" data-table="Facture_Client" data-red="facture-client.php">
                                     <i class="fa fa-times"></i>
@@ -284,6 +292,137 @@
                     <!-- /.modal-dialog -->
                   </div>
 
+                  <div class="modal fade" id="modalModify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="text-info modal-title" id="myModalLabel">Modifier une facture client</h4>
+                        </div>
+                        <div class="modal-body">
+                          <form role="form" class="AVAST_PAM_nonloginform" method="post">
+                            <input type="hidden" name="id" id="id" class="idf" />
+                            <label>Client</label>
+                            <select class="form-control" name="cli" id="cli" required>
+                                <?php
+                                    while($dataclilist = $resultclilist->fetch()){
+                                        echo '<option value="'.$dataclilist['Id_c'].'">'.$dataclilist['Nom_c'].' '.$dataclilist['Prenom_c'].'</option>';
+                                    }
+                                ?>
+                            </select>
+                            </br>
+                            <?php
+                                  for($i=1;$i<11;$i++){
+                                      echo '
+                                          <div class="form-row">
+                                              <div class="form-group col-md-6">
+                                                  <label>Produit '.$i.'</label>
+                                                  <select class="form-control" name="prod'.$i.'" id="prod'.$i.'" required>
+                                                          '.$selectprod.'
+                                                  </select>
+                                              </div>
+                                              <div class="form-group col-md-6">
+                                                  <label>Quantité produit '.$i.'</label>
+                                                  <input class="form-control" name="qte'.$i.'" id="qte'.$i.'" value="0" required/>
+                                              </div>
+                                          </div>
+                                      ';
+                                  }
+                              ?>
+                              <label>État</label>
+                              <div class="radio">
+                                <label>
+                                    <input type="radio" name="etat" id="nopaye" value="0"/>Non-payée
+                                </label>
+                              </div>
+                              <div class="radio">
+                                <label>
+                                    <input type="radio" name="etat" id="paye" value="1"/>Payée
+                                </label>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                <button type="submit" name="submitModify" class="btn btn-primary">Modifier</button>
+                              </div>
+                          </form>
+                          <?php
+                          if(isset($_POST['submitModify'])){
+                               if(($_POST['etat'] == "1" || $_POST['etat'] == "0") && intval($_POST['qte1']) > 0 && is_string($_POST['qte1'])){
+                                $result_nb_fact = $bdd->query("SELECT valeur FROM Numero_Facture_Client WHERE id_num=1;");
+                                $data_nb_fact = $result_nb_fact->fetch();
+                                $ref = 'F-2018-'.strval(intval($data_nb_fact['valeur'])-1);
+
+                                $prixht = 0;
+                                for($k=1;$k<11;$k++){
+                                    $result_prix_produit = $bdd->query("SELECT prix_ht FROM Produit WHERE ref_p = '".$_POST['prod'.$k]."';");
+                                    $data_prix_produit = $result_prix_produit->fetch();
+                                    $prixht = $prixht + intval($data_prix_produit['prix_ht']) * intval($_POST['qte'.$k]);
+                                    $result_prix_produit->closeCursor();
+                                }
+
+                                $resulttva = $bdd->query("SELECT montant_tva FROM TVA WHERE id_tva=1;");
+                                $valeurtva = $resulttva->fetch();
+                                $montanttva = round($prixht * intval($valeurtva['montant_tva'])/100);
+                                $prixttc = $prixht + $montanttva;
+
+                                for($j=2;$j<11;$j++){
+                                    if(intval($_POST['qte'.$j]) == 0){
+                                        $_POST['qte'.$j] = '';
+                                        $_POST['prod'.$j] = '';
+                                    }
+                                }
+
+                             $chg_nb_fact = $bdd->query("UPDATE Numero_Facture_Client SET valeur = ".strval(intval($data_nb_fact['valeur'])+1)." WHERE id_num = 1;");
+                                $eeee = $chg_nb_fact->fetch();
+                                   echo '
+                                       <form id="formModify" role="form" method="post" action="modification.php"><input type="hidden" name="values"
+                                            value=" ref_fac_c = \''.$_POST['ref'].'\',
+                                            id_c = \''.$_POST['fourn'].'\',
+                                            ref_p_1 = \''.$_POST['montant'].'\',
+                                            qte_p_1 = '.$_POST['montant'].',
+                                            ref_p_2 = \''.$_POST['montant'].'\',
+                                            qte_p_2 = '.$_POST['montant'].',
+                                            ref_p_3 = \''.$_POST['montant'].'\',
+                                            qte_p_3 = '.$_POST['montant'].',
+                                            ref_p_4 = \''.$_POST['montant'].'\',
+                                            qte_p_4 = '.$_POST['montant'].',
+                                            ref_p_5 = \''.$_POST['montant'].'\',
+                                            qte_p_5 = '.$_POST['montant'].',
+                                            ref_p_6 = \''.$_POST['montant'].'\',
+                                            qte_p_6 = '.$_POST['montant'].',
+                                            ref_p_7 = \''.$_POST['montant'].'\',
+                                            qte_p_7 = '.$_POST['montant'].',
+                                            ref_p_8 = \''.$_POST['montant'].'\',
+                                            qte_p_8 = '.$_POST['montant'].',
+                                            ref_p_9 = \''.$_POST['montant'].'\',
+                                            qte_p_9 = '.$_POST['montant'].',
+                                            ref_p_10 = \''.$_POST['montant'].'\',
+                                            qte_p_10 = \''.$_POST['montant'].'\',
+                                            prix_tva = '. $montanttva.',
+                                            paiement = '. $_POST['etat'].',
+                                            prix_ttc= '.$prixttc.'  "
+                                          />
+                                          
+                                          <input type="hidden" name="table" value="Facture_Client"/>
+                                          <input type="hidden" name="id" value="'.$_POST['id'].'"/>
+                                          <input type="hidden" name="red" value="facture-client.php"/>
+                                          <input type="hidden" name="nomid" value="id_fac_c"/>
+                                          
+                                      </form>
+                                   <script>document.getElementById("formModify").submit();</script>';
+                               } else {
+                                   echo 'erreur';
+                                   $_POST = array();
+                               }
+                          }
+                      ?>
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
+
               </div>
             </div>
           </div>
@@ -307,18 +446,28 @@
             </form>';
       ?>
   <script>
-    /**
-        function editFac() {
-          var id = button.data('id');
-          document.document.getElementById("id_fac").setAttribute("value", id);
-          //document.getElementById("fac").submit();
-        }
-        **/
-
     $('.editFac').click(function(event) {
       var data = $.parseJSON($(this).attr('data-idfac'));
       document.getElementById("id_fac").setAttribute("value", data);
       document.getElementById("fac").submit();
+    })
+
+    $('#modalModify').on('show.bs.modal', function(event) {
+      var button = $(event.relatedTarget)
+
+      var id = button.data('id')
+      var ref = button.data('ref')
+      var desc = button.data('desc')
+      var montant = button.data('montant')
+
+      var modal = $(this)
+      modal.find('.idf').val(id)
+      modal.find('.reff').val(ref)
+      modal.find('.descf').val(desc)
+      modal.find('.montantf').val(montant)
+
+
+
     })
 
   </script>
