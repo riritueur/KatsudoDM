@@ -250,7 +250,7 @@
                             <label>État</label>
                             <div class="radio">
                               <label>
-                                  <input type="radio"name="etat" id="nopaye" value="0"/>Non-payée
+                                  <input type="radio" name="etat" id="nopaye" value="0"/>Non-payée
                               </label>
                             </div>
                             <div class="radio">
@@ -327,12 +327,20 @@
       var ref = button.data('ref')
       var desc = button.data('desc')
       var montant = button.data('montant')
+      var etat = button.data('etat')
 
       var modal = $(this)
       modal.find('.idf').val(id)
       modal.find('.reff').val(ref)
       modal.find('.descf').val(desc)
       modal.find('.montantf').val(montant)
+      
+      console.log(etat)
+      
+      //if(etat== '0')
+      //  document.getElementById('nopaye').setAttribute("checked", "");
+      //else
+      document.getElementById('paye').setAttribute("checked", "");
       
       
 

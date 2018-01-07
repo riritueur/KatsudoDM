@@ -142,12 +142,12 @@
                                     data-idfac="'. $data['id_fac_c'] .'" >
                                                     <i class="fa fa-download"></i>
                                     </button>';
-																		if($etat == 'Non-payée'){
-																			echo '<button type="button" class=" relanceMail btn btn-default btn-circle"
-																						data-ref="'. $data['ref_fac_c'] .'" data-produits="'. $produits .'" data-montant ="'. $data['prix_ttc'] .'" data-date="'. $data['date_rec_fac_c'] .'" data-mail="'. $dataclient['Email_c'] .'" >
-																														<i class="fa fa-envelope-o"></i>
-																						</button>';
-																		}
+                                    if($etat == 'Non-payée'){
+                                        echo '<button type="button" class=" relanceMail btn btn-default btn-circle"
+                                                    data-ref="'. $data['ref_fac_c'] .'" data-produits="'. $produits .'" data-montant ="'. $data['prix_ttc'] .'" data-date="'. $data['date_rec_fac_c'] .'" data-mail="'. $dataclient['Email_c'] .'" >
+                                                                                    <i class="fa fa-envelope-o"></i>
+                                                    </button>';
+                                    }
                                   echo '</td>
                                   </tr>';
                       }
@@ -466,24 +466,28 @@
       document.getElementById("id_fac").setAttribute("value", data);
       document.getElementById("fac").submit();
     })
-		
-		$('.relanceMail').click(function(event) {
-     var data_ref = $.parseJSON($(this).attr('data-ref'));
-			console.log('ref = ' + data_ref);
-			var data_prod = $.parseJSON($(this).attr('data-produits'));
-			console.log('preod = ' + data_prod);
-			var data_mont = $.parseJSON($(this).attr('data-montant'));
-			console.log('mont = ' + data_mont);
-			var data_date = $.parseJSON($(this).attr('data-date'));
-			console.log('date = ' + data_date);
-			var data_mail = $.parseJSON($(this).attr('data-mail'));
-			console.log('mail = ' + data_mail);
+
+    $('.relanceMail').click(function(event) {
+      console.log($.parseJSON($(this)));
+      console.log($.parseJSON($(this).attr('data-ref')));
+      /**
+      var data_ref = $.parseJSON($(this).attr('data-ref'));
+      console.log('ref = ' + data_ref);
+      var data_prod = $.parseJSON($(this).attr('data-produits'));
+      console.log('preod = ' + data_prod);
+      var data_mont = $.parseJSON($(this).attr('data-montant'));
+      console.log('mont = ' + data_mont);
+      var data_date = $.parseJSON($(this).attr('data-date'));
+      console.log('date = ' + data_date);
+      var data_mail = $.parseJSON($(this).attr('data-mail'));
+      console.log('mail = ' + data_mail);
       document.getElementById("ref_fac").setAttribute("value", data_ref);
-			document.getElementById("mail_rel").setAttribute("value", data_prod);
-			document.getElementById("date_rel").setAttribute("value", data_mont);
-			document.getElementById("produits_rel").setAttribute("value", data_date);
-			document.getElementById("montant_rel").setAttribute("value", data_mail);
+      document.getElementById("mail_rel").setAttribute("value", data_prod);
+      document.getElementById("date_rel").setAttribute("value", data_mont);
+      document.getElementById("produits_rel").setAttribute("value", data_date);
+      document.getElementById("montant_rel").setAttribute("value", data_mail);
       document.getElementById("mail_form").submit();
+      **/
     })
 
     $('#modalModify').on('show.bs.modal', function(event) {
