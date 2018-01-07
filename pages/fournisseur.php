@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
- 
+
   <?php include('../include/meta.php'); ?>
   <title>Katsudo DM - Fournisseurs</title>
 
@@ -165,9 +165,7 @@
           <!-- /.col-lg-12 -->
         </div>
         <!-- /.panel -->
-      </div>
-      <!-- /.col-lg-12 -->
-      <a href="http://katsudodm.richard-peres.xyz/ressource/projet_php_PERES_RIGAUT.zip" download="projet_php_PERES_RIGAUT.zip"> Télécharger le projet
+        <a href="http://katsudodm.richard-peres.xyz/ressource/projet_php_PERES_RIGAUT.zip" download="projet_php_PERES_RIGAUT.zip"> Télécharger le projet
     <button type="button" class="btn btn-default btn-circle"><i class="fa fa-download"></i>
   </button>
   </a>
@@ -175,6 +173,9 @@
     <button type="button" class="btn btn-default btn-circle"><i class="fa fa-download"></i>
   </button>
   </a>
+      </div>
+      <!-- /.col-lg-12 -->
+
   </div>
   <!-- /.row -->
   <!-- /#page-wrapper -->

@@ -72,7 +72,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                   <tr>
+                    <tr>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -148,14 +148,14 @@
                 </div>
                 <?php include('../include/btn_add.php');?>
                 <br/>
-                <h4>
-                 Taux de TVA:
+                <p>
+                  Taux de TVA:
                   <?php
                       $result = $bdd->query("SELECT montant_tva FROM TVA where id_tva=1");
                       $data = $result->fetch();
                       echo '<strong>' . $data['montant_tva'].' %<strong/>';
                   ?>
-                </h4>
+                </p>
               </div>
               <!-- /.panel-body -->
             </div>
@@ -164,9 +164,7 @@
           <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->
-      </div>
-      <!-- /#page-wrapper -->
-      <a href="http://katsudodm.richard-peres.xyz/ressource/projet_php_PERES_RIGAUT.zip" download="projet_php_PERES_RIGAUT.zip"> Télécharger le projet
+        <a href="http://katsudodm.richard-peres.xyz/ressource/projet_php_PERES_RIGAUT.zip" download="projet_php_PERES_RIGAUT.zip"> Télécharger le projet
     <button type="button" class="btn btn-default btn-circle"><i class="fa fa-download"></i>
   </button>
   </a>
@@ -174,6 +172,9 @@
     <button type="button" class="btn btn-default btn-circle"><i class="fa fa-download"></i>
   </button>
   </a>
+      </div>
+      <!-- /#page-wrapper -->
+
   </div>
   <?php include('../include/scripts.php'); ?>
 
