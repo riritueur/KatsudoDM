@@ -118,7 +118,13 @@
 
                                         echo '> <strong>'.$etat.' </strong> </p></td>'.'
                                         <td>
-                                                <button type="button" class="btn btn-default btn-circle">
+                                                <button type="button" class="btn btn-default btn-circle" data-toggle="modal" data-target="#modalModify" 
+                                                data-id="'. $data['id_fac_f'] .'"
+                                                data-ref="'. $data['ref_fac_f'] .'"
+                                                data-fourn="'. $data['id_f'] .'"
+                                                data-desc="'. $data['desc_fac_f'] .'"
+                                                data-montant="'. $data['montant_ht_fac_f'] .'"
+                                                data-etat="'. $data['paiement_fac_f'] .'">
                                                         <i class="fa fa-pencil"></i>
                                                 </button>
                                                 <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="'. $data['id_fac_f'] .'"  data-nomid="id_fac_f" data-table="Facture_Fournisseur" data-red="facture-fournisseur.php">
@@ -136,49 +142,49 @@
                 </table>
                 <!-- /.table-responsive -->
                 <?php include('../include/btn_add.php');?>
-								<?php
+                <?php
 									$resultfournlist = $bdd->query('SELECT id_f, nom_f, prenom_f FROM Fournisseur');
 								?>
-								<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title text-info" id="myModalLabel">Ajouter une facture de fournisseur</h4>
-                      </div>
-                      <div class="modal-body">
-                        <form role="form" class="AVAST_PAM_nonloginform" method="post">
-                          <label>Référence</label>
-                          <input class="form-control" name="ref" id="ref" required/>
-                          <label>Fournisseur</label>
-                          <select class="form-control" name="fourn" id="fourn" required>
+                  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title text-info" id="myModalLabel">Ajouter une facture de fournisseur</h4>
+                        </div>
+                        <div class="modal-body">
+                          <form role="form" class="AVAST_PAM_nonloginform" method="post">
+                            <label>Référence</label>
+                            <input class="form-control" name="ref" id="ref" required/>
+                            <label>Fournisseur</label>
+                            <select class="form-control" name="fourn" id="fourn" required>
 														<?php
 															while($datafournlist = $resultfournlist->fetch()){
 																echo '<option value="'.$datafournlist['id_f'].'">'.$datafournlist['nom_f'].' '.$datafournlist['prenom_f'].'</option>';
 															}
 														?>
 													</select>
-													<label>Description</label>
-                          <input class="form-control" name="desc" id="desc" required/>
-													<label>Prix HT</label>
-                          <input class="form-control" name="prixht" id="prixht" required/>
-													<label>État</label>
-                          <div class="radio">
-														<label>
+                            <label>Description</label>
+                            <input class="form-control" name="desc" id="desc" required/>
+                            <label>Prix HT</label>
+                            <input class="form-control" name="prixht" id="prixht" required/>
+                            <label>État</label>
+                            <div class="radio">
+                              <label>
 															<input type="radio" name="etat" id="nopaye" value="0" checked/>Non-payée
 														</label>
-													</div>
-													<div class="radio">
-														<label>
+                            </div>
+                            <div class="radio">
+                              <label>
 															<input type="radio" name="etat" id="paye" value="1"/>Payée
 														</label>
-													</div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                            <button type="submit" name="submit" class="btn btn-primary">Ajouter</button>
-                          </div>
-                        </form>
-                        <?php
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                              <button type="submit" name="submit" class="btn btn-primary">Ajouter</button>
+                            </div>
+                          </form>
+                          <?php
                           if(isset($_POST['submit'])){
                                if(strlen($_POST['ref'])<21 && strlen($_POST['desc'])<201 && preg_match('#^[0-9]+$#',$_POST['prixht']) && ($_POST['etat'] == "1" || $_POST['etat'] == "0")) {
                               $dateemi = date("Y-m-d H:i:s");
@@ -209,12 +215,93 @@
                                }
                           }
                       ?>
+                        </div>
                       </div>
+                      <!-- /.modal-content -->
                     </div>
-                    <!-- /.modal-content -->
+                    <!-- /.modal-dialog -->
                   </div>
-                  <!-- /.modal-dialog -->
-                </div>
+
+                  <div class="modal fade" id="modalModify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="text-info modal-title" id="myModalLabel">Modifier une facture fournisseur</h4>
+                        </div>
+                        <div class="modal-body">
+                          <form role="form" class="AVAST_PAM_nonloginform" method="post">
+                            <input type="hidden" name="id" id="id" class="idf" />
+                            <label>Référence</label>
+                            <input class="form-control reff" name="ref" id="ref" required/>
+                            <label>Fournisseur</label>
+                            <select class="form-control" name="fourn" id="fourn" required>
+                                <?php
+                                    $resultfournlist = $bdd->query('SELECT id_f, nom_f, prenom_f FROM Fournisseur');
+                                    while($datafournlist = $resultfournlist->fetch()){
+                                        echo '<option value="'.$datafournlist['id_f'].'">'.$datafournlist['nom_f'].' '.$datafournlist['prenom_f'].'</option>';
+                                    }
+                                ?>
+                            </select>
+                            <label>Description</label>
+                            <input class="form-control descf" name="desc" id="desc" required/>
+                            <label>Montant HT</label>
+                            <input class="form-control montantf" name="montant" id="montant" required/>
+                            <label>État</label>
+                            <div class="radio">
+                              <label>
+                                  <input type="radio"name="etat" id="nopaye" value="0"/>Non-payée
+                              </label>
+                            </div>
+                            <div class="radio">
+                              <label>
+                                  <input type="radio" name="etat" id="paye" value="1"/>Payée
+                              </label>
+                            </div>
+                            
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                              <button type="submit" name="submitModify" class="btn btn-primary">Modifier</button>
+                            </div>
+                          </form>
+                          <?php
+                          if(isset($_POST['submitModify'])){
+                               if(strlen($_POST['ref'])<21 && strlen($_POST['desc'])<201 && preg_match('#^[0-9]+$#',$_POST['montant']) && ($_POST['etat'] == "1" || $_POST['etat'] == "0")) {
+                              $resulttva = $bdd->query("SELECT montant_tva FROM TVA WHERE id_tva=1");
+                              $valeurtva = $resulttva->fetch();
+                              $montanttva = round((intval($_POST['montant'])*intval($valeurtva['montant_tva']))/100);
+                              $prixttc = $_POST['montant'] + $montanttva;
+                                   echo '
+                                       <form id="formModify" role="form" method="post" action="modification.php"><input type="hidden" name="values"
+                                            value=" ref_fac_f = \''.$_POST['ref'].'\',
+                                            id_f = \''.$_POST['fourn'].'\',
+                                            desc_fac_f = \''.$_POST['desc'].'\',
+                                            montant_ht_fac_f = \''.$_POST['montant'].'\',
+                                            montant_tva_fac_f = \''. $montanttva.'\',
+                                            paiement_fac_f = \''. $_POST['etat'].'\',
+                                            montant_ttc_fac_f = \''.$prixttc.'\'  "
+                                          />
+                                          
+                                          <input type="hidden" name="table" value="Facture_Fournisseur"/>
+                                          <input type="hidden" name="id" value="'.$_POST['id'].'"/>
+                                          <input type="hidden" name="red" value="facture-fournisseur.php"/>
+                                          <input type="hidden" name="nomid" value="id_fac_f"/>
+                                          
+                                      </form>
+                                   <script>document.getElementById("formModify").submit();</script>';
+                               } else {
+                                   echo 'erreur';
+                                   $_POST = array();
+                               }
+                          }
+                      ?>
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
+
               </div>
             </div>
           </div>
@@ -231,6 +318,27 @@
   </div>
 
   <?php include('../include/scripts.php'); ?>
+
+  <script>
+    $('#modalModify').on('show.bs.modal', function(event) {
+      var button = $(event.relatedTarget)
+      
+      var id = button.data('id')
+      var ref = button.data('ref')
+      var desc = button.data('desc')
+      var montant = button.data('montant')
+
+      var modal = $(this)
+      modal.find('.idf').val(id)
+      modal.find('.reff').val(ref)
+      modal.find('.descf').val(desc)
+      modal.find('.montantf').val(montant)
+      
+      
+
+    })
+
+  </script>
 
 </body>
 
