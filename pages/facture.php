@@ -62,10 +62,6 @@
 
 <body>
 	<?php
-	// FOR TESTS
-	$_POST['id_fac'] = '10';
-	echo $_POST['id_fac'];
-	
 	
 		$result_facture = $bdd->query("SELECT * FROM Facture_Client WHERE id_fac_c = ".$_POST['id_fac']);
 		$data_facture = $result_facture->fetch();

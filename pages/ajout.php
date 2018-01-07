@@ -7,15 +7,11 @@
   <?php include('../include/meta.php'); ?>
  
   <?php
-    
-    //echo "INSERT INTO ".$_POST["table"]." ".$_POST["values"]." VALUES (".$values.");";
 
     if(empty($_POST))
        $vide = true;
     else 
-      foreach($_POST as $cle => $value)
-          if(empty($value))
-              $vide = true;
+       $vide = false;
             
     if(!$vide){
         try{
@@ -34,6 +30,8 @@
                 }
             }
         }
+			
+				//echo "INSERT INTO ".$_POST["table"]." ".$_POST["values"]." VALUES (".$values.");";
 
         $result = $bdd->query("INSERT INTO ".$_POST["table"]." ".$_POST["values"]." VALUES (".$values.");");
 
@@ -49,7 +47,7 @@
 </head>
 
 <body>
-  Supression en cours, si vous êtes sur cette page 
+  Ajout en cours, si vous êtes sur cette page 
   depuis plus de 5 secondes veuillez cliquer
   <a href="index.php">ici</a>
 </body>
