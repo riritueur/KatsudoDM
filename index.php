@@ -27,7 +27,7 @@
 </head>
 
 <body>
-  
+
   <?php
   
   session_start();
@@ -40,12 +40,6 @@
   if(!empty($_POST['id']) && !empty($_POST['pass'])) {
       $signin = false;
       
-      /** POUR TEST LOCAL A SUPPRIMER **/
-      if($_POST['id'] == "admin" && $_POST['pass'] == "password")
-        $signin = true;
-      
-       /** POUR TEST LOCAL A SUPPRIMER **/
-      if($signin == false) { /****/
         try{
             $bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
         }
@@ -59,9 +53,8 @@
              && $data['pass_user'] == $_POST['pass']) {
             $signin = true;
           }
-
         }
-      }/****/
+
       
         
       if($signin) {
@@ -152,7 +145,7 @@
     
   </div>';
   ?>
-  <?php include('include/scripts.php'); ?>
+    <?php include('include/scripts.php'); ?>
 </body>
 
 </html>
