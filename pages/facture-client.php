@@ -92,7 +92,7 @@
                     <?php
                       $result = $bdd->query("SELECT * FROM Facture_Client");
                       while($data = $result->fetch()){
-                          $resultclient = $bdd->query('SELECT Nom_c, Prenom_c, Adresse_c FROM Client Where Id_c='.$data['id_c']);
+                          $resultclient = $bdd->query('SELECT Nom_c, Prenom_c, Email_c FROM Client Where Id_c='.$data['id_c']);
                           $dataclient = $resultclient->fetch();
                           $produits = $data['ref_p_1'].' x'.$data['qte_p_1'];
                           for($i=2;$i<=10;$i++){
@@ -144,7 +144,7 @@
                                     </button>';
 																		if($etat == 'Non-payée'){
 																			echo '<button type="button" class=" relanceMail btn btn-default btn-circle"
-																						data-ref="'. $data['ref_fac_c'] .'" data-produits="'. $produits .'" data-montant ="'. $data['prix_ttc'] .'" data-date="'. $data['date_rec_fac_c'] .'" data-mail="'. $dataclient['Adresse_c'] .'" >
+																						data-ref="'. $data['ref_fac_c'] .'" data-produits="'. $produits .'" data-montant ="'. $data['prix_ttc'] .'" data-date="'. $data['date_rec_fac_c'] .'" data-mail="'. $dataclient['Email_c'] .'" >
 																														<i class="fa fa-envelope-o"></i>
 																						</button>';
 																		}
@@ -468,11 +468,16 @@
     })
 		
 		$('.relanceMail').click(function(event) {
-      var data_ref = $.parseJSON($(this).attr('data-ref'));
+     var data_ref = $.parseJSON($(this).attr('data-ref'));
+			console.log('ref = ' + data_ref);
 			var data_prod = $.parseJSON($(this).attr('data-produits'));
+			console.log('preod = ' + data_prod);
 			var data_mont = $.parseJSON($(this).attr('data-montant'));
+			console.log('mont = ' + data_mont);
 			var data_date = $.parseJSON($(this).attr('data-date'));
+			console.log('date = ' + data_date);
 			var data_mail = $.parseJSON($(this).attr('data-mail'));
+			console.log('mail = ' + data_mail);
       document.getElementById("ref_fac").setAttribute("value", data_ref);
 			document.getElementById("mail_rel").setAttribute("value", data_prod);
 			document.getElementById("date_rel").setAttribute("value", data_mont);
