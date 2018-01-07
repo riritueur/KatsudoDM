@@ -430,3 +430,7 @@ table.dataTable thead .sorting:after {
     border-left-width: 0;
   }
 }
+
+.inline-b {
+  display: inline-block !important;
+}
