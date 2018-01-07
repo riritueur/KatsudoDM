@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 
-     <a class="block" href="index.php"><img src="../ressource/image/DM_logo.svg" alt="logo" class="logo img-thumbnail" width="50" /></a>
+     <a class="block" href="index.php"><img src="../ressource/image/DM_logo.svg" alt="logo" class="logo" width="50" /></a>
     
     <a class="navbar-brand" href="index.php">Katsudo DM</a>
   </div>
@@ -56,7 +56,7 @@
           <a href="taxe.php"><i class="fa fa-usd fa-fw"></i> Taxes</a>
         </li>
         <li>
-          <a href="#"><i class="fa fa-book fa-fw"></i> Factures<span class="fa arrow"></span></a>
+          <a href="#"><i class="fa fa-file-text fa-fw"></i> Factures<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li>
               <a href="facture-client.php"><i class="fa fa-users fa-fw"></i> Clients</a>

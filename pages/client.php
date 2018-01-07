@@ -90,7 +90,12 @@
                               <td>'.$data['Tel_c'].'</td>'.'
                               <td>'.$data['Email_c'].'</td>'.'
                               <td>
-                                      <button type="button" class="btn btn-default btn-circle">
+                                      <button type="button" class="btn btn-default btn-circle" data-toggle="modal" data-target="#modalModify" data-id="'. $data['Id_c'] .'"
+                                      data-nom="'. $data['Nom_c'] .'"
+                                      data-prenom="'. $data['Prenom_c'] .'"
+                                      data-adresse="'. $data['Adresse_c'] .'"
+                                      data-tel="'. $data['Tel_c'] .'"
+                                      data-mail="'. $data['Email_c'] .'">
                                               <i class="fa fa-pencil"></i>
                                       </button>
                                       <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#modalDel" data-id="'. $data['Id_c'] .'"  data-nomid="Id_c" data-table="Client" data-red="client.php">
@@ -109,7 +114,7 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Ajouter une taxe</h4>
+                        <h4 class="text-info modal-title" id="myModalLabel">Ajouter un client</h4>
                       </div>
                       <div class="modal-body">
                         <form role="form" class="AVAST_PAM_nonloginform" method="post">
@@ -155,6 +160,64 @@
                   </div>
                   <!-- /.modal-dialog -->
                 </div>
+                
+                <div class="modal fade" id="modalModify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="text-info modal-title" id="myModalLabel">Modifier un client</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form role="form" class="AVAST_PAM_nonloginform" method="post">
+                          <input type="hidden" name="id" id="id" class="idf" />
+                          <label>Nom</label>
+                          <input class="form-control nomf" name="nom" id="nom" required/>
+                          <label>Prénom</label>
+                          <input class="form-control prenomf" name="prenom" id="prenom" required/>
+                          <label>Adresse</label>
+                          <input class="form-control adressef" name="adresse" id="adresse" required/>
+                          <label>Téléphone</label>
+                          <input class="form-control telf" name="tel" id="tel" required/>
+                          <label>E-mail</label>
+                          <input class="form-control mailf" name="mail" id="mail" required/>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                            <button type="submit" name="submitModify" class="btn btn-primary">Modifier</button>
+                          </div>
+                        </form>
+                        <?php
+                          if(isset($_POST['submitModify'])){
+                               if(is_string($_POST['nom']) && strlen($_POST['nom'])<51 && is_string($_POST['prenom']) && strlen($_POST['prenom'])<51 && is_string($_POST['adresse']) && strlen($_POST['nom'])<201 && is_string($_POST['tel']) && strlen($_POST['tel']) == 10 && preg_match("#[0-9]{10}#", $_POST['tel']) && is_string($_POST['mail']) && strlen($_POST['mail']) < 51 && preg_match('#^([\w\.-]+)@([\w\.-]+)(\.[a-z]{2,4})$#',trim($_POST['mail']))) {
+                                   echo '
+                                       <form id="formModify" role="form" method="post" action="modification.php">
+                                          <input type="hidden" name="values"
+                                            value="Nom_c = \''.$_POST['nom'].'\',
+                                            Prenom_c = \''.$_POST['prenom'].'\',
+                                            Adresse_c = \''.$_POST['adresse'].'\',
+                                            Tel_c = \''.$_POST['tel'].'\',
+                                            Email_c = \''.$_POST['mail'].'\'"
+                                          />
+                                          
+                                          <input type="hidden" name="table" value="Client"/>
+                                          <input type="hidden" name="id" value="'.$_POST['id'].'"/>
+                                          <input type="hidden" name="red" value="client.php"/>
+                                          <input type="hidden" name="nomid" value="Id_c"/>
+                                          
+                                      </form>
+                                   <script>document.getElementById("formModify").submit();</script>';
+                               } else {
+                                   echo 'erreur';
+                                   $_POST = array();
+                               }
+                          }
+                      ?>
+                      </div>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
                 <?php include('../include/btn_add.php');?>
               </div>
               <!-- /.panel-body -->
@@ -171,7 +234,27 @@
 
   </div>
   <?php include('../include/scripts.php'); ?>
+  
+  <script>
+    $('#modalModify').on('show.bs.modal', function(event) {
+      var button = $(event.relatedTarget)
+      var id = button.data('id')
+      var nom = button.data('nom')
+      var prenom = button.data('prenom')
+      var adresse = button.data('adresse')
+      var tel = button.data('tel')
+      var mail = button.data('mail')
 
+      var modal = $(this)
+      modal.find('.idf').val(id)
+      modal.find('.nomf').val(nom)
+      modal.find('.prenomf').val(prenom)
+      modal.find('.adressef').val(adresse)
+      modal.find('.telf').val(tel)
+      modal.find('.mailf').val(mail)
+      
+    })
+  </script>
 </body>
 
 </html>

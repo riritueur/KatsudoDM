@@ -6,8 +6,9 @@
   
   <?php
     session_start();
-    setcookie('login', '', -1);
-    $_COOKIE = array();
+    unset($_COOKIE['login']);
+    setcookie('login', null, -1, '/');
+    //$_SESSION = array();
   
     session_destroy();
 

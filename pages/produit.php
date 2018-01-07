@@ -72,7 +72,7 @@
                     </tr>
                   </thead>
                   <tbody>
-										<tr>
+                    <tr>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -101,63 +101,63 @@
                   </tbody>
                 </table>
                 <!-- /.table-responsive -->
-								<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-										<div class="modal-dialog">
-												<div class="modal-content">
-														<div class="modal-header">
-																<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-																<h4 class="modal-title" id="myModalLabel">Ajouter une taxe</h4>
-														</div>
-														<div class="modal-body">
-															<form role="form" class="AVAST_PAM_nonloginform" method="post" enctype="multipart/form-data">
-																<label>Référence</label>
-																<input class="form-control" name="ref" id="ref" required/>
-																<label>Description</label>
-																<input class="form-control" name="desc" id="desc" required/>
-																<label>Image</label>
-																<input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
-																<input type="file" name="img" id="img" required/>
-																<label>Prix HT</label>
-																<input class="form-control" name="prix" id="prix" required/>
-																<div class="modal-footer">
-																	<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-																	<button type="submit" name="submit" class="btn btn-primary">Ajouter</button>
-																</div>
-															</form>
-															<?php
-																if(isset($_POST['submit'])){
-																	$ext = array('png');
-																	$ext_upload = strtolower(substr(strrchr($_FILES['img']['name'],'.'),1));
-																	if(in_array($ext_upload,$ext) && $_FILES['img']['size'] < 1000000){
-																	 if(is_string($_POST['ref']) && strlen($_POST['ref'])<11 && is_string($_POST['desc']) && strlen($_POST['desc'])<251 && preg_match('#^[0-9]+$#',$_POST['prix'])){
-																		 $resultat = move_uploaded_file($_FILES['img']['tmp_name'],"../produits/".$_POST['ref'].".png");
-																		 echo '
-																			 <form id="formT" role="form" method="post" action="ajout.php">
-																				<input type="hidden" name="values" value="(ref_p, desc_p, image_p, prix_ht)"/>
-																				<input type="hidden" name="table" value="Produit"/>
-																				<input type="hidden" name="red" value="produit.php"/>
-																				<input type="hidden" name="a" value="'.$_POST['ref'].'"/>
-																				<input type="hidden" name="b" value="'.$_POST['desc'].'"/>
-																				<input type="hidden" name="c" value="http://katsudodm.richard-peres.xyz//produits/'.$_POST['ref'].'.png"/>
-																				<input type="hidden" name="d" value="'.$_POST['prix'].'"/>
-																			</form>
-																		 <script>document.getElementById("formT").submit();</script>';
-																	 }else {
-																		 echo 'erreur';
-																		 $_POST = array();
-																	 }
-																	}else {
-																		 echo 'erreur image';
-																		 $_POST = array();
-																	 }
-																}
-															?>
-													</div>
-												</div>
-												<!-- /.modal-content -->
-										</div>
-										<!-- /.modal-dialog -->
-								</div>
+                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title text-info" id="myModalLabel">Ajouter un produit</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form role="form" class="AVAST_PAM_nonloginform" method="post" enctype="multipart/form-data">
+                          <label>Référence</label>
+                          <input class="form-control" name="ref" id="ref" required/>
+                          <label>Description</label>
+                          <input class="form-control" name="desc" id="desc" required/>
+                          <label>Image</label>
+                          <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+                          <input type="file" name="img" id="img" required/>
+                          <label>Prix HT</label>
+                          <input class="form-control" name="prix" id="prix" required/>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Ajouter</button>
+                          </div>
+                        </form>
+                        <?php
+                          if(isset($_POST['submit'])){
+                              $ext = array('png');
+                              $ext_upload = strtolower(substr(strrchr($_FILES['img']['name'],'.'),1));
+                              if(in_array($ext_upload,$ext) && $_FILES['img']['size'] < 1000000){
+                               if(is_string($_POST['ref']) && strlen($_POST['ref'])<11 && is_string($_POST['desc']) && strlen($_POST['desc'])<251 && preg_match('#^[0-9]+$#',$_POST['prix'])){
+                                   $resultat = move_uploaded_file($_FILES['img']['tmp_name'],"../produits/".$_POST['ref'].".png");
+                                   echo '
+                                       <form id="formT" role="form" method="post" action="ajout.php">
+                                          <input type="hidden" name="values" value="(ref_p, desc_p, image_p, prix_ht)"/>
+                                          <input type="hidden" name="table" value="Produit"/>
+                                          <input type="hidden" name="red" value="produit.php"/>
+                                          <input type="hidden" name="a" value="'.$_POST['ref'].'"/>
+                                          <input type="hidden" name="b" value="'.$_POST['desc'].'"/>
+                                          <input type="hidden" name="c" value="http://katsudodm.richard-peres.xyz//produits/'.$_POST['ref'].'.png"/>
+                                          <input type="hidden" name="d" value="'.$_POST['prix'].'"/>
+                                      </form>
+                                   <script>document.getElementById("formT").submit();</script>';
+                               }else {
+                                   echo 'erreur';
+                                   $_POST = array();
+                               }
+                              }else {
+                                   echo 'erreur image';
+                                   $_POST = array();
+                               }
+                          }
+                      ?>
+                      </div>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
                 <?php include('../include/btn_add.php');?>
               </div>
               <img class="img-thumbnail" />

@@ -111,12 +111,12 @@
                                         <td>'.$data['montant_ttc_fac_f'].'</td>'.'
                                         <td>'.$data['date_emi_fac_f'].'</td>'.'
                                         <td>'.$data['date_rec_fac_f'].'</td>'.'
-                                        <td ';
+                                        <td> <p ';
                                           if($etat == 'Payée')
-                                            echo 'class="text-success"';
-                                          else echo 'class="text-danger"';
+                                            echo 'class="label label-success"';
+                                          else echo 'class="label label-danger"';
 
-                                        echo '> <strong>'.$etat.' </strong></td>'.'
+                                        echo '> <strong>'.$etat.' </strong> </p></td>'.'
                                         <td>
                                                 <button type="button" class="btn btn-default btn-circle">
                                                         <i class="fa fa-pencil"></i>
@@ -144,7 +144,7 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Ajouter une facture de fournisseur</h4>
+                        <h4 class="modal-title text-info" id="myModalLabel">Ajouter une facture de fournisseur</h4>
                       </div>
                       <div class="modal-body">
                         <form role="form" class="AVAST_PAM_nonloginform" method="post">
