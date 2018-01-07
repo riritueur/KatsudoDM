@@ -92,7 +92,7 @@
                     <?php
                       $result = $bdd->query("SELECT * FROM Facture_Client");
                       while($data = $result->fetch()){
-                          $resultclient = $bdd->query('SELECT Nom_c, Prenom_c FROM Client Where Id_c='.$data['id_c']);
+                          $resultclient = $bdd->query('SELECT Nom_c, Prenom_c, Adresse_c FROM Client Where Id_c='.$data['id_c']);
                           $dataclient = $resultclient->fetch();
                           $produits = $data['ref_p_1'].' x'.$data['qte_p_1'];
                           for($i=2;$i<=10;$i++){
@@ -146,11 +146,11 @@
 																			
 																			
 																			echo '<button type="button" class=" relanceMail btn btn-default btn-circle"
-																						data-ref="'. $data['ref_fac_c'] .'" data-produits="'. $produits .' data-montant ="'. $data['prix_ttc'] .'" data-date="'. $data['date_rec_fac_c'] .'">
-																														<i class="fa fa-download"></i>
+																						data-ref="'. $data['ref_fac_c'] .'" data-produits="'. $produits .' data-montant ="'. $data['prix_ttc'] .'" data-date="'. $data['date_rec_fac_c'] .'" data-mail="'. $dataclient['Adresse_c'] .'" >
+																														<i class="fa fa-envelope-o"></i>
 																						</button>'
 																		}
-                                  echo '</td>'.'
+                                  echo '</td>
                                   </tr>';
                       }
                     ?>
@@ -452,12 +452,34 @@
       echo '<form id="fac" role="form" method="post" action="facture.php">
       <input type="hidden" name="id_fac" id="id_fac"/>
             </form>';
+
+			echo '<form id="mail_form" role="form" method="post" action="mailing.php">
+							<input type="hidden" name="ref_fac" id="ref_fac"/>
+							<input type="hidden" name="mail_rel" id="mail_rel"/>
+							<input type="hidden" name="date_rel" id="date_rel"/>
+							<input type="hidden" name="produits_rel" id="produits_rel"/>
+							<input type="hidden" name="montant_rel" id="montant_rel"/>
+            </form>';
       ?>
   <script>
     $('.editFac').click(function(event) {
       var data = $.parseJSON($(this).attr('data-idfac'));
       document.getElementById("id_fac").setAttribute("value", data);
       document.getElementById("fac").submit();
+    })
+		
+		$('.relanceMail').click(function(event) {
+      var data_ref = $.parseJSON($(this).attr('data-ref'));
+			var data_prod = $.parseJSON($(this).attr('data-produits'));
+			var data_mont = $.parseJSON($(this).attr('data-montant'));
+			var data_date = $.parseJSON($(this).attr('data-date'));
+			var data_mail = $.parseJSON($(this).attr('data-mail'));
+      document.getElementById("ref_fac").setAttribute("value", data_ref);
+			document.getElementById("mail_rel").setAttribute("value", data_prod);
+			document.getElementById("date_rel").setAttribute("value", data_mont);
+			document.getElementById("produits_rel").setAttribute("value", data_date);
+			document.getElementById("montant_rel").setAttribute("value", data_mail);
+      document.getElementById("mail_form").submit();
     })
 
     $('#modalModify').on('show.bs.modal', function(event) {
