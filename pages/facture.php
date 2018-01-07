@@ -62,18 +62,25 @@
 
 <body>
 	<?php
+		try{
+			$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u178917848_katsu;charset=utf8', 'u178917848_kuser', 'password');
+		}
+		catch (Exception $e)
+		{
+			die('Erreur : ' . $e->getMessage());
+		}
 	
-		$result_facture = $bdd->query("SELECT * FROM Facture_Client WHERE id_fac_c = ".$_POST['id_fac']);
+		$result_facture = $bdd->query("SELECT * FROM Facture_Client WHERE id_fac_c = ".$_POST['id_fac'].";");
 		$data_facture = $result_facture->fetch();
 		$result_facture->closeCursor();
 
 		$result_client = $bdd->query("SELECT * FROM Client WHERE Id_c = ".$data_facture['id_c']);
-		$data_client = $result->client->fetch();
+		$data_client = $result_client->fetch();
 		$result_client->closeCursor();
 	
-		$result_prix_produit1 = $bdd->query("SELECT prix_ht FROM Produit WHERE ref_p = ".$data_facture['ref_p_1']);
-		$data_prix_produit1 = $result_prix_produit1->fetch();
-		$result_prix_produit1->closeCursor();
+		$result_produit1 = $bdd->query("SELECT prix_ht, desc_p FROM Produit WHERE ref_p = '".$data_facture['ref_p_1']."'");
+		$data_produit1 = $result_produit1->fetch();
+		$result_produit1->closeCursor();
 	
 		$result_tva = $bdd->query("SELECT montant_tva FROM TVA WHERE id_tva = 1");
 		$data_tva = $result_tva->fetch();
@@ -83,30 +90,30 @@
 	
 		$produits = '<tr>
 									<td>'.$data_facture['ref_p_1'].'</td>
+									<td>'.$data_produit1['desc_p'].'</td>
 									<td class="text-center">'.$data_facture['qte_p_1'].'</td>
-									<td class="text-center">'.strval( intval($data_facture['qte_p_1']) * intval($data_prix_produit1['prix_ht']) ).'</td>
+									<td class="text-center">'.strval( intval($data_facture['qte_p_1']) * intval($data_produit1['prix_ht']) ).'</td>
 								</tr>';
 		
-		$total_ht = intval($data_prix_produit1['prix_ht']);
+		$total_ht = intval($data_facture['qte_p_1']) * intval($data_produit1['prix_ht']);
 	
 		for($i=2;$i<=10;$i++){
 				if($data_facture['ref_p_'.$i]){
-						$result_prix_produit_i = $bdd->query("SELECT prix_ht FROM Produit WHERE ref_p = ".$data_facture['ref_p_'.$i]);
-						$data_prix_produit_i = $result_prix_produit_i->fetch();
-						$result_prix_produit_i->closeCursor();
+						$result_produit_i = $bdd->query("SELECT prix_ht, desc_p FROM Produit WHERE ref_p = '".$data_facture['ref_p_'.$i]."'");
+						$data_produit_i = $result_produit_i->fetch();
+						$result_produit_i->closeCursor();
 					
-						$produit = $produit.'
+						$produits = $produits.'
 							<tr>
 								<td>'.$data_facture['ref_p_'.$i].'</td>
+								<td>'.$data_produit_i['desc_p'].'</td>
 								<td class="text-center">'.$data_facture['qte_p_'.$i].'</td>
-								<td class="text-center">'.strval( intval($data_facture['qte_p_'.$i]) * intval($data_prix_produit_i['prix_ht']) ).'</td>
+								<td class="text-center">'.strval( intval($data_facture['qte_p_'.$i]) * intval($data_produit_i['prix_ht']) ).'</td>
 							</tr>';
 					
-					$total_ht = $total_ht + intval($data_prix_produit_i['prix_ht']);
+					$total_ht = $total_ht + intval($data_facture['qte_p_'.$i]) * intval($data_produit_i['prix_ht']);
 				}
-		}
-	
-		
+		}		
 	
 	?>
 
@@ -117,7 +124,7 @@
           <img src="../ressource/image/DM_logo.svg" alt="logo" width="60" height="60" />
           <h2>Facture</h2>
           <h3 class="pull-right">
-            <?php echo $_POST['id_fac'];?>
+            <?php echo $data_facture['ref_fac_c'];?>
           </h3>
         </div>
         <hr>
@@ -174,7 +181,7 @@
               <thead>
                 <tr>
                   <td><strong>Référence</strong></td>
-                  <td class="text-center"><strong>Description</strong></td>
+                  <td><strong>Description</strong></td>
                   <td class="text-center"><strong>Quantité</strong></td>
                   <td class="text-right"><strong>Total HT</strong></td>
                 </tr>
@@ -189,7 +196,7 @@
                   <td class="thick-line"></td>
                   <td class="thick-line text-center"><strong>Prix HT</strong></td>
                   <td class="thick-line text-right">
-                    <?php echo $total_ht * ;?>
+                    <?php echo $total_ht;?>
                   </td>
                 </tr>
                 <tr>
@@ -239,7 +246,7 @@
     
     doc.addHTML(document.body, function() {
       // Décommente pour DL la facture
-      doc.save('Facture ' /** + numFacture **/);
+      doc.save('Facture <?php echo $data_facture['ref_fac_c'] ?>');
     });
     window.close();
     //document.location.href = red
