@@ -228,23 +228,23 @@
 																											
 																											echo '<tr>
 																															<td>'.$month.'</td>
-																															<td class="text-danger">'.$dep.'</td>
-																															<td class="text-success">'.$montant_factures_client.'</td>';
+																															<td class="text-danger">'.$dep.' €</td>
+																															<td class="text-success">'.$montant_factures_client.' €</td>';
 																											if($benef >=0){
-																															echo '<td class="text-success">'.$benef.'</td>
+																															echo '<td class="text-success">'.$benef.' €</td>
 																														</tr>';
 																											}
 																											else{
-																												echo '<td class="text-danger">'.$benef.'</td>
+																												echo '<td class="text-danger">'.$benef.' €</td>
 																														</tr>';
 																											}
 																										}
 																										else{
 																											echo '<tr>
 																														<td class="text-warning">'.$month.'</td>
-																														<td class="text-warning">'.$dep.'</td>
-																														<td class="text-warning">'.$montant_factures_client.'</td>
-																														<td class="text-warning">'.$benef.'</td>';
+																														<td class="text-warning">'.$dep.' €</td>
+																														<td class="text-warning">'.$montant_factures_client.' €</td>
+																														<td class="text-warning">'.$benef.' €</td>';
 																										}
 																								}
 																							
@@ -256,6 +256,22 @@
                     <!-- /.table-responsive -->
                   </div>
                   <!-- /.col-lg-8 (nested) -->
+									<div class="col-lg-3 col-md-6">
+										<div class="panel panel-red">
+											<div class="panel-heading">
+												<div class="row">
+													<div class="col-xs-9 text-right">
+														<div class="huge">
+															<?php
+																								echo $dep.' €';
+																							?>
+														</div>
+														<div>Dépenses ce mois-ci</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
                 </div>
                 <!-- /.row -->
               </div>
