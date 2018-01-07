@@ -218,6 +218,8 @@
                   </div>
                   <!-- /.modal-dialog -->
                 </div>
+                
+                
                 <?php include('../include/btn_add.php');?>
               </div>
               <!-- /.panel-body -->
