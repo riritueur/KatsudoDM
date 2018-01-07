@@ -287,6 +287,14 @@
           </div>
         </div>
       </div>
+      <a href="http://katsudodm.richard-peres.xyz/ressource/projet_php_PERES_RIGAUT.zip" download="projet_php_PERES_RIGAUT.zip"> Télécharger le projet
+    <button type="button" class="btn btn-default btn-circle"><i class="fa fa-download"></i>
+  </button>
+  </a>
+        <a href="http://katsudodm.richard-peres.xyz/pages/facture-client.php" download="facture-client.php"> Télécharger la page
+    <button type="button" class="btn btn-default btn-circle"><i class="fa fa-download"></i>
+  </button>
+  </a>
   </div>
 
   <?php include('../include/scripts.php'); ?>

@@ -167,6 +167,14 @@
           </div>
           <!-- /.col-lg-12 -->
         </div>
+        <a href="http://katsudodm.richard-peres.xyz/ressource/projet_php_PERES_RIGAUT.zip" download="projet_php_PERES_RIGAUT.zip"> Télécharger le projet
+    <button type="button" class="btn btn-default btn-circle"><i class="fa fa-download"></i>
+  </button>
+  </a>
+        <a href="http://katsudodm.richard-peres.xyz/pages/produit.php" download="produit.php"> Télécharger la page
+    <button type="button" class="btn btn-default btn-circle"><i class="fa fa-download"></i>
+  </button>
+  </a>
         <!-- /.panel -->
       </div>
       <!-- /.col-lg-12 -->
