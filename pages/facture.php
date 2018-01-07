@@ -62,6 +62,11 @@
 
 <body>
 	<?php
+	// FOR TESTS
+	$_POST['id_fac'] = '10';
+	echo $_POST['id_fac'];
+	
+	
 		$result_facture = $bdd->query("SELECT * FROM Facture_Client WHERE id_fac_c = ".$_POST['id_fac']);
 		$data_facture = $result_facture->fetch();
 		$result_facture->closeCursor();
@@ -73,6 +78,12 @@
 		$result_prix_produit1 = $bdd->query("SELECT prix_ht FROM Produit WHERE ref_p = ".$data_facture['ref_p_1']);
 		$data_prix_produit1 = $result_prix_produit1->fetch();
 		$result_prix_produit1->closeCursor();
+	
+		$result_tva = $bdd->query("SELECT montant_tva FROM TVA WHERE id_tva = 1");
+		$data_tva = $result_tva->fetch();
+		$result_tva->closeCursor();
+	
+		$tva = intval($data_tva['montant_tva']);
 	
 		$produits = '<tr>
 									<td>'.$data_facture['ref_p_1'].'</td>
@@ -98,6 +109,8 @@
 					$total_ht = $total_ht + intval($data_prix_produit_i['prix_ht']);
 				}
 		}
+	
+		
 	
 	?>
 
@@ -129,8 +142,10 @@
             <address>
         			<strong>Client :</strong><br>
     					<?php
-								echo 	$data_client['Nom_c'].' '.$data_client['Prenom_c']'</br>'
-											
+								echo 	$data_client['Nom_c'].' '.$data_client['Prenom_c'].'</br>'.
+											$data_client['Tel_c'].'</br>'.
+											$data_client['Email_c'].'</br>'.
+											$data_client['Adresse_c'].'</br>';
 							?>
     				</address>
           </div>
@@ -170,34 +185,15 @@
               </thead>
               <tbody>
                 <?php 
-                  // Affichage des Produits en fonction de $_POST
-                  // avec un foreach ou un for
-                  echo '<tr>
-                    <td>BS-1000</td>
-                    <td class="text-center">$produit</td>
-                    <td class="text-center">$qte</td>
-                    <td class="text-right">$totalHT</td>
-                  </tr>';
-                  ?>
-                <tr>
-                    <td>BS-1000</td>
-                    <td class="text-center">$produit</td>
-                    <td class="text-center">$qte</td>
-                    <td class="text-right">$totalHT</td>
-                  </tr>
-                  <tr>
-                    <td>BS-1000</td>
-                    <td class="text-center">$produit</td>
-                    <td class="text-center">$qte</td>
-                    <td class="text-right">$totalHT</td>
-                  </tr>
+                  echo $produits;
+                 ?>
                   
                 <tr>
                   <td class="thick-line"></td>
                   <td class="thick-line"></td>
                   <td class="thick-line text-center"><strong>Prix HT</strong></td>
                   <td class="thick-line text-right">
-                    <?php echo "\$_POST['totalHT']";?>
+                    <?php echo $total_ht * ;?>
                   </td>
                 </tr>
                 <tr>
@@ -205,7 +201,7 @@
                   <td class="no-line"></td>
                   <td class="no-line text-center"><strong>TVA</strong></td>
                   <td class="no-line text-right">
-                    <?php echo "\$_POST['tva']";?>
+                    <?php echo round($total_ht * ($tva/100));?>
                   </td>
                 </tr>
                 <tr>
@@ -213,7 +209,7 @@
                   <td class="no-line"></td>
                   <td class="no-line text-center"><strong>Prix TTC</strong></td>
                   <td class="no-line text-right">
-                    <?php echo "\$_POST['totalTTC']";?>
+                    <?php echo $total_ht + round($total_ht * ($tva/100));?>
                   </td>
                 </tr>
               </tbody>
