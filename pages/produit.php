@@ -113,6 +113,7 @@
                           <input class="form-control" name="desc" id="desc" required/>
                           <label>Image</label>
                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+                          <p class="help-block">(Fichier PNG de moins de 10mo uniquement)</p>
                           <input type="file" name="img" id="img" required/>
                           <label>Prix HT</label>
                           <input class="form-control" name="prix" id="prix" required/>
