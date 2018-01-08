@@ -66,51 +66,6 @@
             </li>
           </ul>
         </li>
-        <li> ----<br/>---- </li>
-        <li>
-          <a href="#"><i class="fa fa-wrench fa-fw"></i> Test<span class="fa arrow"></span></a>
-          <ul class="nav nav-second-level">
-            <li>
-              <a href="Demo/panels-wells.php">Panels and Wells</a>
-            </li>
-            <li>
-              <a href="Demo/buttons.php">Buttons</a>
-            </li>
-            <li>
-              <a href="Demo/notifications.php">Notifications</a>
-            </li>
-            <li>
-              <a href="Demo/typography.php">Typography</a>
-            </li>
-            <li>
-              <a href="Demo/icons.php"> Icons</a>
-            </li>
-            <li>
-              <a href="Demo/grid.php">Grid</a>
-            </li>
-            <li>
-              <a href="Demo/tables.php"><i class="fa fa-table fa-fw"></i> Tables</a>
-            </li>
-            <li>
-              <a href="Demo/blank.php"><i class="fa fa-table fa-fw"></i> Blank</a>
-            </li>
-            <li>
-              <a href="Demo/forms.php"><i class="fa fa-table fa-fw"></i> Forms</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-              <ul class="nav nav-second-level">
-                <li>
-                  <a href="flot.php">Flot Charts</a>
-                </li>
-                <li>
-                  <a href="morris.php">Morris.js Charts</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <!-- /.nav-second-level -->
-        </li>
       </ul>
     </div>
     <!-- /.sidebar-collapse -->
