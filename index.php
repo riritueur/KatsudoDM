@@ -61,6 +61,11 @@
   
         setcookie('login',$_POST['id'],time()+1800); 
         
+        $headers =  'From: katsudo@dm.com \r\n' .
+                    'Reply-To: katsudo@dm.com \r\n' .
+                    'X-Mailer: PHP \r\n';
+        mail("riritueur@gmail.com", "Test Mailing", "Ceci est un test.", $headers);
+        
         header('Location: ./pages/index.php');
         exit;
       }
