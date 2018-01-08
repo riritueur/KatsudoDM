@@ -97,7 +97,7 @@
                           $produits = $data['ref_p_1'].' x'.$data['qte_p_1'];
                           for($i=2;$i<=10;$i++){
                               if($data['ref_p_'.$i]){
-                                  $produits = $produits.'<br/>'.$data['ref_p_'.$i].' x'.$data['qte_p_'.$i];
+                                  $produits = $produits.' <br/>'.$data['ref_p_'.$i].' x'.$data['qte_p_'.$i];
                               }
                           }
                           $etat = 'error';
@@ -127,10 +127,7 @@
                                   
                                     <button type="button" class="btn btn-default btn-circle" data-toggle="modal" data-target="#modalModify" 
                                     data-id="'. $data['id_fac_c'] .'"
-                                    data-ref="'. $data['ref_fac_c'] .'"
                                     data-fourn="'. $data['id_c'] .'"
-                                    data-desc="'. $data['desc_fac_c'] .'"
-                                    data-montant="'. $data['montant_ht_fac_c'] .'"
                                     data-etat="'. $data['paiement_fac_c'] .'">
                                             <i class="fa fa-pencil"></i>
                                     </button>
@@ -143,10 +140,14 @@
                                                     <i class="fa fa-download"></i>
                                     </button>';
                                     if($etat == 'Non-payée'){
-                                        echo '<button type="button" class=" relanceMail btn btn-default btn-circle"
-                                                    data-mailtext="Merci de bien vouloir régulariser votre facture n° '. $data['ref_fac_c'] . ' d\'un montant TTC de ' .$data['prix_ttc']. '€ pour le(s) produit(s) suivant(s) : '. $produits . '.<br/>L\'échéance de paiement de la facture tombe le : '. $data['date_rec_fac_c'] . '. Au-delà de cette date, une pénalité vous sera facturée pour retard de paiement.<br/><br/>Merci de votre compréhension.<br/>Cordialement,<br/>L\'équipe KatsudoDM.<br/>katsudo@dm.com<br/>a<br/>a<br/>a<br/>" >
-                                                                                    <i class="fa fa-envelope-o"></i>
-                                                    </button>';
+                                        echo '<button type="button" class=" btn btn-default btn-circle" data-toggle="modal" data-target="#modalMail"
+                                        data-nom="'.$dataclient['Nom_c'].'"
+                                        data-prenom="'.$dataclient['Prenom_c'].'"
+                                        data-mail="'.$dataclient['Email_c'].'"
+                                        data-obj="Relance Facture impayée KatsudoDM"
+                                        data-message="Madame, Monsieur '.$dataclient['Nom_c'].',<br/><br/>Merci de bien vouloir régulariser votre facture n° '. $data['ref_fac_c'] . ' d\'un montant TTC de ' .$data['prix_ttc']. '€ pour le(s) produit(s) suivant(s) :<br/> '. $produits . '.<br/>La facture doit être payé avant le : '. $data['date_rec_fac_c'] . '. Au-delà de cette date, une pénalité vous sera facturée pour retard de paiement.<br/><br/>Merci de votre compréhension.<br/>Cordialement,<br/>L\'équipe KatsudoDM.<br/>katsudo@dm.com<br/><br/><br/><br/>" >
+                                                                        <i class="fa fa-envelope-o"></i>
+                                        </button>';
                                     }
                                   echo '</td>
                                   </tr>';
@@ -383,29 +384,30 @@
                                 $eeee = $chg_nb_fact->fetch();
                                    echo '
                                        <form id="formModify" role="form" method="post" action="modification.php"><input type="hidden" name="values"
-                                            value=" ref_fac_c = \''.$_POST['ref'].'\',
-                                            id_c = \''.$_POST['fourn'].'\',
+                                            value="
+                                            id_c = \''.$_POST['cli'].'\',
                                             ref_p_1 = \''.$_POST['prod1'].'\',
-                                            qte_p_1 = '.$_POST['qte1'].',
+                                            qte_p_1 = \''.$_POST['qte1'].'\',
                                             ref_p_2 = \''.$_POST['prod2'].'\',
-                                            qte_p_2 = '.$_POST['qte2'].',
+                                            qte_p_2 = \''.$_POST['qte2'].'\',
                                             ref_p_3 = \''.$_POST['prod3'].'\',
-                                            qte_p_3 = '.$_POST['qte3'].',
+                                            qte_p_3 = \''.$_POST['qte3'].'\',
                                             ref_p_4 = \''.$_POST['prod4'].'\',
-                                            qte_p_4 = '.$_POST['qte4'].',
+                                            qte_p_4 = \''.$_POST['qte4'].'\',
                                             ref_p_5 = \''.$_POST['prod5'].'\',
-                                            qte_p_5 = '.$_POST['qte5'].',
+                                            qte_p_5 = \''.$_POST['qte5'].'\',
                                             ref_p_6 = \''.$_POST['prod6'].'\',
-                                            qte_p_6 = '.$_POST['qte6'].',
+                                            qte_p_6 = \''.$_POST['qte6'].'\',
                                             ref_p_7 = \''.$_POST['prod7'].'\',
-                                            qte_p_7 = '.$_POST['qte7'].',
+                                            qte_p_7 = \''.$_POST['qte7'].'\',
                                             ref_p_8 = \''.$_POST['prod8'].'\',
-                                            qte_p_8 = '.$_POST['qte8'].',
+                                            qte_p_8 = \''.$_POST['qte8'].'\',
                                             ref_p_9 = \''.$_POST['prod9'].'\',
-                                            qte_p_9 = '.$_POST['qte9'].',
+                                            qte_p_9 = \''.$_POST['qte9'].'\',
                                             ref_p_10 = \''.$_POST['prod10'].'\',
                                             qte_p_10 = \''.$_POST['qte10'].'\',
                                             prix_tva = '. $montanttva.',
+                                            prix_ht = '. $prixht.',
                                             paiement = '. $_POST['etat'].',
                                             prix_ttc= '.$prixttc.'  "
                                           />
@@ -430,6 +432,67 @@
                     <!-- /.modal-dialog -->
                   </div>
 
+
+                  <div class="modal fade" id="modalMail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="text-info modal-title" id="myModalLabel">Confirmer l'envoi</h4>
+                        </div>
+                        <div class="modal-body">
+                          <form role="form" class="AVAST_PAM_nonloginform" method="post">
+                            <div class="form-group">
+                              <label>Nom Client</label>
+                              <input type="text" name="nom" id="nom" class="nomf form-control" disabled/>
+                            </div>
+                            <div class="form-group">
+                              <label>Prénom Client</label>
+                              <input type="text" name="prenom" id="prenom" class="prenomf form-control" disabled/>
+                            </div>
+                            <div class="form-group">
+                              <label>Email Client</label>
+                              <input type="text" class="mailf form-control" disabled/>
+                              <input type="hidden" name="email" id="email" class="mailff form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>Objet du mail</label>
+                              <input type="text" name="obj" id="obj" class="objf form-control" />
+                              <label>Corps du mail</label>
+                              <p class="help-block">(Les '<code>&lt;br/&gt;</code>' seront remplacés par des sauts de lignes dans le mail final)</p>
+                              <textarea class="form-control messagef" name="message" id="message" required minlength="10" maxlength="1000" rows="6"></textarea>
+                            </div>
+                            <br/>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                              <button type="submit" name="submitMail" class="btn btn-primary">Envoyer</button>
+                            </div>
+                          </form>
+                          <?php
+                          if(isset($_POST['submitMail'])){
+                               if(!empty($_POST['email']) && !empty($_POST['obj']) &&
+                                  !empty($_POST['message']) )
+                                   echo '
+                                   <form id="formMailing" role="form" method="post" action="mailing.php">
+                                          <input type="hidden" name="mail" value="'.$_POST['email'].'"/>
+                                          <input type="hidden" name="obj" value="'.$_POST['obj'].'"/>
+                                          <input type="hidden" name="message" value="'.$_POST['message'].'"/>
+                                      </form>
+                                   <script>document.getElementById("formMailing").submit();</script>';
+                               else {
+                                  print_r($_POST);
+                                   echo 'erreur';
+                                   $_POST = array();
+                               }
+                          }
+                      ?>
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+            </div></br>
+
               </div>
             </div>
           </div>
@@ -442,9 +505,7 @@
     <button type="button" class="btn btn-default btn-circle"><i class="fa fa-download"></i>
   </button>
   </a>
-      </div>
 
-  </div>
 
   <?php include('../include/scripts.php'); ?>
   <?php 
@@ -467,44 +528,30 @@
       document.getElementById("fac").submit();
     })
 
-    $('.relanceMail').click(function(event) {
-      console.log($.parseJSON($(this)));
-      console.log($.parseJSON($(this).attr('data-ref')));
-      /**
-      var data_ref = $.parseJSON($(this).attr('data-ref'));
-      console.log('ref = ' + data_ref);
-      var data_prod = $.parseJSON($(this).attr('data-produits'));
-      console.log('preod = ' + data_prod);
-      var data_mont = $.parseJSON($(this).attr('data-montant'));
-      console.log('mont = ' + data_mont);
-      var data_date = $.parseJSON($(this).attr('data-date'));
-      console.log('date = ' + data_date);
-      var data_mail = $.parseJSON($(this).attr('data-mail'));
-      console.log('mail = ' + data_mail);
-      document.getElementById("ref_fac").setAttribute("value", data_ref);
-      document.getElementById("mail_rel").setAttribute("value", data_prod);
-      document.getElementById("date_rel").setAttribute("value", data_mont);
-      document.getElementById("produits_rel").setAttribute("value", data_date);
-      document.getElementById("montant_rel").setAttribute("value", data_mail);
-      document.getElementById("mail_form").submit();
-      **/
-    })
-
     $('#modalModify').on('show.bs.modal', function(event) {
       var button = $(event.relatedTarget)
 
       var id = button.data('id')
-      var ref = button.data('ref')
-      var desc = button.data('desc')
-      var montant = button.data('montant')
 
       var modal = $(this)
       modal.find('.idf').val(id)
-      modal.find('.reff').val(ref)
-      modal.find('.descf').val(desc)
-      modal.find('.montantf').val(montant)
+    })
 
+    $('#modalMail').on('show.bs.modal', function(event) {
+      var button = $(event.relatedTarget)
+      var nom = button.data('nom')
+      var prenom = button.data('prenom')
+      var mail = button.data('mail')
+      var obj = button.data('obj')
+      var message = button.data('message')
 
+      var modal = $(this)
+      modal.find('.nomf').val(nom)
+      modal.find('.prenomf').val(prenom)
+      modal.find('.mailf').val(mail)
+      modal.find('.mailff').val(mail)
+      modal.find('.objf').val(obj)
+      modal.find('.messagef').val(message)
 
     })
 

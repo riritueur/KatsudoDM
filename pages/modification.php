@@ -26,7 +26,7 @@
 
         $result = $bdd->query("UPDATE ".$_POST["table"]." SET ".$_POST["values"]." WHERE ". $_POST["nomid"] ." = " . $_POST["id"] . ";");
 
-        echo '<h1>Succès</h1>';
+        print_r($bdd->errorInfo());
       }
       header('Location: '.$_POST["red"]);
       exit;
