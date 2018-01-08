@@ -144,7 +144,7 @@
                                     </button>';
                                     if($etat == 'Non-payée'){
                                         echo '<button type="button" class=" relanceMail btn btn-default btn-circle"
-                                                    data-ref="'. $data['ref_fac_c'] .'" data-produits="'. $produits .'" data-montant ="'. $data['prix_ttc'] .'" data-date="'. $data['date_rec_fac_c'] .'" data-mail="'. $dataclient['Email_c'] .'" >
+                                                    data-mailtext="Merci de bien vouloir régulariser votre facture n° '. $data['ref_fac_c'] . ' d\'un montant TTC de ' .$data['prix_ttc']. '€ pour le(s) produit(s) suivant(s) : '. $produits . '.<br/>L\'échéance de paiement de la facture tombe le : '. $data['date_rec_fac_c'] . '. Au-delà de cette date, une pénalité vous sera facturée pour retard de paiement.<br/><br/>Merci de votre compréhension.<br/>Cordialement,<br/>L\'équipe KatsudoDM.<br/>katsudo@dm.com<br/>a<br/>a<br/>a<br/>" >
                                                                                     <i class="fa fa-envelope-o"></i>
                                                     </button>';
                                     }
